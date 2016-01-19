@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLResearch", "OpenGLResearch\OpenGLResearch.vcxproj", "{CA0BD7BB-B7F1-4197-8925-7FB2AB1E2871}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA0BD7BB-B7F1-4197-8925-7FB2AB1E2871}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CA0BD7BB-B7F1-4197-8925-7FB2AB1E2871}.Debug|Win32.Build.0 = Debug|Win32
+		{CA0BD7BB-B7F1-4197-8925-7FB2AB1E2871}.Release|Win32.ActiveCfg = Release|Win32
+		{CA0BD7BB-B7F1-4197-8925-7FB2AB1E2871}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
