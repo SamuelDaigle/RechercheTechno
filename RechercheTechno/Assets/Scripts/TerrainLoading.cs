@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 
 public class TerrainLoading : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class TerrainLoading : MonoBehaviour
 
     private Terrain terrain;
     private float[,] heights;
+    private Region[,] regions;
     private int sizeX;
     private int sizeY;
 
@@ -20,6 +22,9 @@ public class TerrainLoading : MonoBehaviour
         sizeY = terrain.terrainData.heightmapHeight;
         heights = GetTerrainHeights();
         sizeX--; sizeY--; // for further loops.
+
+        RegionGenerator regionGenerator = new RegionGenerator();
+        regions = regionGenerator.GenerateRegions(sizeX, sizeY);
 
         RaiseTerrain();
         CreateMountains();
@@ -67,6 +72,11 @@ public class TerrainLoading : MonoBehaviour
         SetEmptyHeight(xCenter, _bottom, (GetHeight(_left, _bottom) + GetHeight(_right, _bottom)) / 2);
         SetEmptyHeight(_left, yCenter, (GetHeight(_left, _top) + GetHeight(_left, _bottom)) / 2);
         SetEmptyHeight(_right, yCenter, (GetHeight(_right, _top) + GetHeight(_right, _bottom)) / 2);
+
+        if (regions[xCenter, yCenter] is Mountain)
+        {
+            SetEmptyHeight(xCenter, yCenter, 0.5f);
+        }
 
         // Call smaller regions.
         DiamondSquare(_left, _top, xCenter, yCenter, base_height, _recursiveLevel - 1);
