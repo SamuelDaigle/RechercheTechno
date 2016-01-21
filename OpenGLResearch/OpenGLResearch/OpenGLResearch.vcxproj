@@ -70,6 +70,8 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="ShaderLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="color.frag" />
@@ -78,6 +80,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="SceneLogic.h" />
+    <ClInclude Include="ShaderLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,7 @@
 #include "Dependencies\glew\glew.h"
 #include "Dependencies\freeglut\freeglut.h"
+#include "ShaderLoader.h"
+#include "Window.h"
 
 #include <iostream>
 #include <fstream>
@@ -21,6 +23,8 @@ GLfloat vertices2[] = { 0.0f, 0.0f, 0.0f,
 unsigned int vertexArrayObjID[2];
 // three vertex buffer objects in this example
 unsigned int vertexBufferObjID[3];
+
+Window* window;
 
 void init(void)
 {
@@ -57,114 +61,6 @@ void init(void)
 	glBindVertexArray(0);
 }
 
-char* loadFile(char *fname, GLint &fSize)
-{
-	ifstream::pos_type size;
-	char * memblock;
-	string text;
-
-	// file read based on example in cplusplus.com tutorial
-	ifstream file(fname, ios::in | ios::binary | ios::ate);
-	if (file.is_open())
-	{
-		size = file.tellg();
-		fSize = (GLuint)size;
-		memblock = new char[size];
-		file.seekg(0, ios::beg);
-		file.read(memblock, size);
-		file.close();
-		cout << "file " << fname << " loaded" << endl;
-		text.assign(memblock);
-	}
-	else
-	{
-		cout << "Unable to open file " << fname << endl;
-		exit(1);
-	}
-	return memblock;
-}
-
-
-// printShaderInfoLog
-// From OpenGL Shading Language 3rd Edition, p215-216
-// Display (hopefully) useful error messages if shader fails to compile
-void printShaderInfoLog(GLint shader)
-{
-	int infoLogLen = 0;
-	int charsWritten = 0;
-	GLchar *infoLog;
-
-	glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLogLen);
-
-	// should additionally check for OpenGL errors here
-
-	if (infoLogLen > 0)
-	{
-		infoLog = new GLchar[infoLogLen];
-		// error check for fail to allocate memory omitted
-		glGetShaderInfoLog(shader, infoLogLen, &charsWritten, infoLog);
-		cout << "InfoLog:" << endl << infoLog << endl;
-		delete[] infoLog;
-	}
-
-	// should additionally check for OpenGL errors here
-}
-
-
-void initShaders(void)
-{
-	GLuint p, f, v;
-
-	char *vs, *fs;
-
-	v = glCreateShader(GL_VERTEX_SHADER);
-	f = glCreateShader(GL_FRAGMENT_SHADER);
-
-	// load shaders & get length of each
-	GLint vlen;
-	GLint flen;
-	vs = loadFile("color.vert", vlen);
-	fs = loadFile("color.frag", flen);
-
-	const char * vv = vs;
-	const char * ff = fs;
-
-	glShaderSource(v, 1, &vv, &vlen);
-	glShaderSource(f, 1, &ff, &flen);
-
-	GLint compiled;
-
-	glCompileShader(v);
-	glGetShaderiv(v, GL_COMPILE_STATUS, &compiled);
-	if (!compiled)
-	{
-		cout << "Vertex shader not compiled." << endl;
-		printShaderInfoLog(v);
-	}
-
-	glCompileShader(f);
-	glGetShaderiv(f, GL_COMPILE_STATUS, &compiled);
-	if (!compiled)
-	{
-		cout << "Fragment shader not compiled." << endl;
-		printShaderInfoLog(f);
-	}
-
-	p = glCreateProgram();
-
-	glBindAttribLocation(p, 0, "in_Position");
-	glBindAttribLocation(p, 1, "in_Color");
-
-	glAttachShader(p, v);
-	glAttachShader(p, f);
-
-	glLinkProgram(p);
-	glUseProgram(p);
-
-	delete[] vs; // dont forget to free allocated memory
-	delete[] fs; // we allocated this in the loadFile function...
-}
-
 void display(void)
 {
 	// clear the screen
@@ -180,15 +76,25 @@ void display(void)
 	glBindVertexArray(0);
 
 	glutSwapBuffers();
+	window->Display();
 }
 
 void reshape(int w, int h)
 {
 	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+	window->Reshape();
+}
+
+void update()
+{
+	window->Update();
 }
 
 int main(int argc, char* argv[])
 {
+	ShaderLoader shaderLoader;
+	window = new Window();
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowSize(600, 600);
@@ -205,10 +111,12 @@ int main(int argc, char* argv[])
 	cout << "OpenGL version " << glGetString(GL_VERSION) << " supported" << endl;
 
 	init();
-	initShaders();
+	shaderLoader.LoadShader("color.vert", ShaderLoader::VERTEX);
+	shaderLoader.LoadShader("color.frag", ShaderLoader::FRAGMENTATION);
+	shaderLoader.CompileLoadedShaders();
+	glutIdleFunc(update);
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-
 	glutMainLoop();
 	return 0;
 
