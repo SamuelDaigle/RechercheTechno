@@ -70,6 +70,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
   </ItemGroup>
@@ -79,9 +80,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneLogic.h" />
     <ClInclude Include="ShaderLoader.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

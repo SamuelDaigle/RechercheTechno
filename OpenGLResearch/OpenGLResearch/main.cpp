@@ -9,17 +9,7 @@
 
 using namespace std;
 
-float elapsedTime = 0.1f;
 GLfloat translateMatrix[3][3];
-GLfloat vertices[] = { -0.4f, 0.0f, 0.0f,
--0.4f, 0.4f, 0.0f,
-0.0f, 0.0f, 0.0f };
-GLfloat colours[] = { 1.0f, 0.0f, 0.0f,
-0.0f, 1.0f, 0.0f,
-0.0f, 0.0f, 1.0f };
-GLfloat vertices2[] = { 0.0f, 0.0f, 0.0f,
-0.0f, -1.0f, 0.0f,
-1.0f, 0.0f, 0.0f };
 
 // two vertex array objects, one for each object drawn
 unsigned int vertexArrayObjID[2];
@@ -27,10 +17,14 @@ unsigned int vertexArrayObjID[2];
 unsigned int vertexBufferObjID[3];
 
 Window* window;
+Triangle triangle;
+Triangle triangle2;
 
 void init(void)
 {
-	// Would load objects from file here - but using globals in this example	
+	Vector3 position(0,0,0);
+	triangle2.SetVertices(position, 0.25f);
+	triangle.SetColors(RED, GREEN, BLUE);
 
 	// Allocate Vertex Array Objects
 	glGenVertexArrays(2, &vertexArrayObjID[0]);
@@ -40,13 +34,13 @@ void init(void)
 
 	// VBO for vertex data
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjID[0]);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), triangle.vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer((GLuint)0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
 	// VBO for colour data
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjID[1]);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), colours, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), triangle.colours, GL_STATIC_DRAW);
 	glVertexAttribPointer((GLuint)1, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(1);
 
@@ -56,7 +50,7 @@ void init(void)
 
 	// VBO for vertex data
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjID[2]);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), vertices2, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), triangle2.vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer((GLuint)0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
@@ -71,7 +65,7 @@ void update(int _i)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			vertices[count] += translateMatrix[i][j];
+			triangle.vertices[count] += translateMatrix[i][j];
 			count++;
 		}
 	}
@@ -85,7 +79,7 @@ void display(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjID[0]);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), triangle.vertices, GL_STATIC_DRAW);
 	glBindVertexArray(vertexArrayObjID[0]);	// First VAO
 	glDrawArrays(GL_TRIANGLES, 0, 3);	// draw first object
 
@@ -99,10 +93,9 @@ void display(void)
 	window->Display();
 }
 
-void reshape(int w, int h)
+void reshape(int _screenWidth, int _screenHeight)
 {
-	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
-	window->Reshape();
+	window->Reshape(_screenWidth, _screenHeight);
 }
 
 int main(int argc, char* argv[])
@@ -136,7 +129,7 @@ int main(int argc, char* argv[])
 	cout << "Status: Using GLEW " << glewGetString(GLEW_VERSION) << endl;
 	cout << "OpenGL version " << glGetString(GL_VERSION) << " supported" << endl;
 
-	init();
+	window->Initialize();
 	shaderLoader.LoadShader("color.vert", ShaderLoader::VERTEX);
 	shaderLoader.LoadShader("color.frag", ShaderLoader::FRAGMENTATION);
 	shaderLoader.CompileLoadedShaders();
