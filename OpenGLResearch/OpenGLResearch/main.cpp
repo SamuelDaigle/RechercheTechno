@@ -23,16 +23,6 @@ Triangle triangle2;
 void update(int _i)
 {
 	window->Update();
-	int count = 0;
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			triangle.vertices[count] += translateMatrix[i][j];
-			count++;
-		}
-	}
-	//glutPostRedisplay();
 	glutTimerFunc(0.1f, update, 0.1f);
 }
 
