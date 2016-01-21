@@ -9,8 +9,10 @@
 
 using namespace std;
 
-GLfloat vertices[] = { -1.0f, 0.0f, 0.0f,
-0.0f, 1.0f, 0.0f,
+float elapsedTime = 0.1f;
+GLfloat translateMatrix[3][3];
+GLfloat vertices[] = { -0.4f, 0.0f, 0.0f,
+-0.4f, 0.4f, 0.0f,
 0.0f, 0.0f, 0.0f };
 GLfloat colours[] = { 1.0f, 0.0f, 0.0f,
 0.0f, 1.0f, 0.0f,
@@ -61,11 +63,29 @@ void init(void)
 	glBindVertexArray(0);
 }
 
+void update(int _i)
+{
+	window->Update();
+	int count = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			vertices[count] += translateMatrix[i][j];
+			count++;
+		}
+	}
+	glutPostRedisplay();
+	glutTimerFunc(1, update, 1);
+}
+
 void display(void)
 {
 	// clear the screen
 	glClear(GL_COLOR_BUFFER_BIT);
 
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjID[0]);
+	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
 	glBindVertexArray(vertexArrayObjID[0]);	// First VAO
 	glDrawArrays(GL_TRIANGLES, 0, 3);	// draw first object
 
@@ -85,15 +105,21 @@ void reshape(int w, int h)
 	window->Reshape();
 }
 
-void update()
-{
-	window->Update();
-}
-
 int main(int argc, char* argv[])
 {
 	ShaderLoader shaderLoader;
 	window = new Window();
+
+	translateMatrix[0][0] = 0.0001f;
+	translateMatrix[1][0] = 0.0001f;
+	translateMatrix[2][0] = 0.0001f;
+	translateMatrix[0][1] = 0.0001f;
+	translateMatrix[1][1] = 0.0001f;
+	translateMatrix[2][1] = 0.0001f;
+	translateMatrix[0][2] = 0.0f;
+	translateMatrix[1][2] = 0.0f;
+	translateMatrix[2][2] = 0.0f;
+
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
@@ -114,7 +140,7 @@ int main(int argc, char* argv[])
 	shaderLoader.LoadShader("color.vert", ShaderLoader::VERTEX);
 	shaderLoader.LoadShader("color.frag", ShaderLoader::FRAGMENTATION);
 	shaderLoader.CompileLoadedShaders();
-	glutIdleFunc(update);
+	glutTimerFunc( 1, update, 1);
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutMainLoop();
