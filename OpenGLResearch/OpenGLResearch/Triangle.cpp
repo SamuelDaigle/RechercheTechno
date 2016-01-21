@@ -3,7 +3,7 @@
 
 Triangle::Triangle()
 {
-	Vector3 position;
+	Vector3 position(0,0,0);
 	SetVertices(position, 0.5f);
 	SetColors(RED);
 }
