@@ -68,6 +68,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DynamicArray.hpp">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Triangle.cpp" />
@@ -81,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
+    <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneLogic.h" />
     <ClInclude Include="ShaderLoader.h" />

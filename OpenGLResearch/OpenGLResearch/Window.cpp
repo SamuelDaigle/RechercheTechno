@@ -4,33 +4,44 @@
 
 void Window::Initialize()
 {
-	Triangle triangle;
-	triangle.SetColors(RED, GREEN, BLUE);
+	renderer = new Renderer();
+	renderer->Initialize();
 
-	// Allocate Vertex Array Objects
-	glGenVertexArrays(2, &vertexArrayObjID[0]);
-	// Setup first Vertex Array Object
-	glBindVertexArray(vertexArrayObjID[0]);
-	glGenBuffers(2, vertexBufferObjID);
+	Triangle* triangle = new Triangle();
+	triangle->SetVertices(Vector3(0.5f, 0.5f, 0.0f), 0.25f);
+	triangle->SetColors(RED, GREEN, BLUE);
 
-	// VBO for vertex data
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjID[0]);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), triangle.vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer((GLuint)0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(0);
+	Triangle* triangle2 = new Triangle();
+	triangle2->SetVertices(Vector3(-0.5f, -0.5f, 0.0f), 0.25f);
+	triangle2->SetColors(RED, TRANSPARENT, BLUE);
 
-	// VBO for colour data
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjID[1]);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), triangle.colours, GL_STATIC_DRAW);
-	glVertexAttribPointer((GLuint)1, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(1);
+	Triangle* triangle3 = new Triangle();
+	triangle3->SetVertices(Vector3(-0.5f, 0.75f, 0.0f), 0.5f, 0.1f);
+	triangle3->SetColors(BLUE, BLUE, BLUE);
 
-	glBindVertexArray(0);
+	Triangle* triangle4 = new Triangle();
+	triangle4->SetVertices(Vector3(-0.5f, 0.35f, 0.0f), 0.5f, 0.1f);
+	triangle4->SetColors(BLUE, GREEN, BLUE);
+
+	Triangle* triangle5 = new Triangle();
+	triangle5->SetVertices(Vector3(0.5f, 0.25f, 0.0f), 0.5f, 0.1f);
+	triangle5->SetColors(BLUE, BLUE, BLUE);
+
+	renderer->AttachDrawableObject(triangle);
+	renderer->AttachDrawableObject(triangle2);
+	renderer->AttachDrawableObject(triangle3);
+	renderer->AttachDrawableObject(triangle4);
+	renderer->AttachDrawableObject(triangle5);
+
+	renderer->LockRenderer();
+	
 }
 
 void Window::Update()
 {
 	manageInput();
+
+	renderer->renderedObjects[0]->vertices[0] -= 0.0000001f;
 }
 
 void Window::Display()
@@ -38,14 +49,7 @@ void Window::Display()
 	// clear the screen
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	glBindVertexArray(vertexArrayObjID[0]);	// First VAO
-	glDrawArrays(GL_TRIANGLES, 0, 3);	// draw first object
-
-	glBindVertexArray(vertexArrayObjID[1]);		// select second VAO
-	glVertexAttrib3f((GLuint)1, 1.0, 0.0, 0.0); // set constant color attribute
-	glDrawArrays(GL_TRIANGLES, 0, 3);	// draw second object
-
-	glBindVertexArray(0);
+	renderer->Render();
 
 	glutSwapBuffers();
 }
