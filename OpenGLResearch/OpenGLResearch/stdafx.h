@@ -7,3 +7,4 @@
 #include "Vector3.h"
 #include "Color.h"
 #include "DynamicArray.h"
+#include "IManipulated.h"

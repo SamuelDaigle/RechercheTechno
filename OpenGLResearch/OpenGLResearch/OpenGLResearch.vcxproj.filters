@@ -71,5 +71,8 @@
     <ClInclude Include="DynamicArray.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="IManipulated.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

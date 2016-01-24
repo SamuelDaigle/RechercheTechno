@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #pragma once
-class Triangle
+class Triangle : public IManipulated
 {
 public:
 	Triangle();
@@ -10,6 +10,10 @@ public:
 	void SetVertices(Vector3 _position, float _width, float _height);
 	void SetColors(Color _color);
 	void SetColors(Color _color1, Color _color2, Color _color3);
+	
+	//IManipulated methods
+	void Translate(float _x, float _y, float _z);
+	void Rotate(float _angle);
 
 	GLfloat vertices[9];
 	GLfloat colours[9];
