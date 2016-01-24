@@ -68,10 +68,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DynamicArray.hpp">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Manipulation.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="Translation.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
@@ -83,12 +84,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
-    <ClInclude Include="Manipulation.h" />
+    <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneLogic.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Translation.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vector3.h" />
   </ItemGroup>
