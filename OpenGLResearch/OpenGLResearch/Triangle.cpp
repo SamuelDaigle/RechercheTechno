@@ -3,17 +3,17 @@
 
 Triangle::Triangle()
 {
-	Vector3 position(0, 0, 0);
+	vec3 position(0, 0, 0);
 	SetVertices(position, 0.5f);
 	SetColors(RED);
 }
 
-void Triangle::SetVertices(Vector3 _position, float _size)
+void Triangle::SetVertices(vec3 _position, float _size)
 {
 	SetVertices(_position, _size, _size);
 }
 
-void Triangle::SetVertices(Vector3 _position, float _width, float _height)
+void Triangle::SetVertices(vec3 _position, float _width, float _height)
 {
 	vertices[0] = _position.x; vertices[1] = _position.y; vertices[2] = _position.z;
 	vertices[3] = _position.x + _width; vertices[4] = _position.y; vertices[5] = _position.z;
@@ -41,9 +41,7 @@ void Triangle::Translate(float _x, float _y, float _z)
 
 void Triangle::Rotate(float _angle)
 {
-	
-
-	/*GLfloat resultMatrix[9];
+	GLfloat resultMatrix[9];
 	resultMatrix[0] = vertices[0] * cosf(_angle) - vertices[1] * sinf(_angle);
 	resultMatrix[1] = vertices[0] * sinf(_angle) + vertices[1] * cosf(_angle);
 	resultMatrix[2] = 0;
@@ -57,7 +55,7 @@ void Triangle::Rotate(float _angle)
 	for (int i = 0; i < 9; i++)
 	{
 		vertices[i] = resultMatrix[i];
-	}*/
+	}
 }
 
 void Triangle::Reshape(float _scale)
@@ -68,12 +66,12 @@ void Triangle::Reshape(float _scale)
 	}
 }
 
-Vector3 Triangle::FindCenter()
+vec3 Triangle::FindCenter()
 {
 	float centerX = (vertices[0] + vertices[3] + vertices[6]) / 3;
 	float centerY = (vertices[1] + vertices[4] + vertices[7]) / 3;
 	float centerZ = (vertices[2] + vertices[5] + vertices[8]) / 3;
 
-	Vector3 center(centerX, centerY, centerZ);
+	vec3 center(centerX, centerY, centerZ);
 	return center;
 }

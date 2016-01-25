@@ -68,9 +68,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="DynamicArray.hpp">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Triangle.cpp" />
@@ -91,7 +93,6 @@
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Triangle.h" />
-    <ClInclude Include="Vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

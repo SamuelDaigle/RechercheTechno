@@ -6,8 +6,8 @@ class Triangle : public IManipulated
 public:
 	Triangle();
 
-	void SetVertices(Vector3 _position, float _size);
-	void SetVertices(Vector3 _position, float _width, float _height);
+	void SetVertices(vec3 _position, float _size);
+	void SetVertices(vec3 _position, float _width, float _height);
 	void SetColors(Color _color);
 	void SetColors(Color _color1, Color _color2, Color _color3);
 	
@@ -16,7 +16,7 @@ public:
 	void Rotate(float _angle);
 	void Reshape(float _scale);
 
-	Vector3 FindCenter();
+	vec3 FindCenter();
 
 	GLfloat vertices[9];
 	GLfloat colours[9];
