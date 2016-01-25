@@ -8,7 +8,7 @@ void Window::Initialize()
 	renderer->Initialize();
 
 	Triangle* triangle = new Triangle();
-	triangle->SetVertices(Vector3(0.5f, 0.5f, 0.0f), 0.25f);
+	triangle->SetVertices(Vector3(0, 0, 0), 0.5f);
 	triangle->SetColors(RED, GREEN, BLUE);
 
 	Triangle* triangle2 = new Triangle();
@@ -40,8 +40,7 @@ void Window::Initialize()
 void Window::Update()
 {
 	manageInput();
-
-	renderer->renderedObjects[0]->vertices[0] -= 0.0000001f;
+	renderer->renderedObjects[0]->Rotate(0.00000818125f);
 }
 
 void Window::Display()

@@ -85,6 +85,7 @@
   <ItemGroup>
     <ClInclude Include="Color.h" />
     <ClInclude Include="DynamicArray.h" />
+    <ClInclude Include="IManipulated.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneLogic.h" />
     <ClInclude Include="ShaderLoader.h" />
