@@ -38,7 +38,7 @@ void Renderer::LockRenderer()
 		glGenBuffers(2, vertexBufferObjID[i]);
 
 		// Do not set vertex data nor color data as they will be set during rendering step.
-	}	
+	}
 }
 
 void Renderer::Render()

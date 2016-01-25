@@ -16,7 +16,7 @@ public:
 	void Rotate(float _angle);
 	void Reshape(float _scale);
 
-	void FindCenter();
+	Vector3 FindCenter();
 
 	GLfloat vertices[9];
 	GLfloat colours[9];

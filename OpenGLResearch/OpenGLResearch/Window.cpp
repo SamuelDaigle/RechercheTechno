@@ -10,10 +10,8 @@ void Window::Initialize()
 	Triangle* triangle = new Triangle();
 	triangle->SetVertices(Vector3(0, 0, 0), 0.5f);
 	triangle->SetColors(RED, GREEN, BLUE);
-	//triangle->Reshape(3);
-	triangle->FindCenter();
 
-	/*Triangle* triangle2 = new Triangle();
+	Triangle* triangle2 = new Triangle();
 	triangle2->SetVertices(Vector3(-0.5f, -0.5f, 0.0f), 0.25f);
 	triangle2->SetColors(RED, TRANSPARENT, BLUE);
 
@@ -27,13 +25,13 @@ void Window::Initialize()
 
 	Triangle* triangle5 = new Triangle();
 	triangle5->SetVertices(Vector3(0.5f, 0.25f, 0.0f), 0.5f, 0.1f);
-	triangle5->SetColors(BLUE, BLUE, BLUE);*/
+	triangle5->SetColors(BLUE, BLUE, BLUE);
 
 	renderer->AttachDrawableObject(triangle);
-	/*renderer->AttachDrawableObject(triangle2);
+	renderer->AttachDrawableObject(triangle2);
 	renderer->AttachDrawableObject(triangle3);
 	renderer->AttachDrawableObject(triangle4);
-	renderer->AttachDrawableObject(triangle5);*/
+	renderer->AttachDrawableObject(triangle5);
 
 	renderer->LockRenderer();
 	
@@ -42,6 +40,7 @@ void Window::Initialize()
 void Window::Update()
 {
 	manageInput();
+	renderer->renderedObjects[0]->Rotate(0.00000818125f);
 }
 
 void Window::Display()
