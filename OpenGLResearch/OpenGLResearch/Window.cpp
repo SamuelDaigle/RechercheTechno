@@ -8,9 +8,10 @@ void Window::Initialize()
 	renderer->Initialize();
 
 	Triangle* triangle = new Triangle();
-	triangle->SetVertices(Vector3(0, 0, 0), 0.25f);
+	triangle->SetVertices(Vector3(0, 0, 0), 0.5f);
 	triangle->SetColors(RED, GREEN, BLUE);
-	//triangle->Rotate(3.1416 / 2);
+	//triangle->Reshape(3);
+	triangle->FindCenter();
 
 	/*Triangle* triangle2 = new Triangle();
 	triangle2->SetVertices(Vector3(-0.5f, -0.5f, 0.0f), 0.25f);

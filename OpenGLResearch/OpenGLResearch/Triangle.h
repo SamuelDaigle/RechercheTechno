@@ -14,6 +14,9 @@ public:
 	//IManipulated methods
 	void Translate(float _x, float _y, float _z);
 	void Rotate(float _angle);
+	void Reshape(float _scale);
+
+	void FindCenter();
 
 	GLfloat vertices[9];
 	GLfloat colours[9];
