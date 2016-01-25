@@ -8,23 +8,23 @@ void Window::Initialize()
 	renderer->Initialize();
 
 	Triangle* triangle = new Triangle();
-	triangle->SetVertices(Vector3(0, 0, 0), 0.5f);
+	triangle->SetVertices(vec3(0, 0, 0), 0.5f);
 	triangle->SetColors(RED, GREEN, BLUE);
 
 	Triangle* triangle2 = new Triangle();
-	triangle2->SetVertices(Vector3(-0.5f, -0.5f, 0.0f), 0.25f);
+	triangle2->SetVertices(vec3(-0.5f, -0.5f, 0.0f), 0.25f);
 	triangle2->SetColors(RED, TRANSPARENT, BLUE);
 
 	Triangle* triangle3 = new Triangle();
-	triangle3->SetVertices(Vector3(-0.5f, 0.75f, 0.0f), 0.5f, 0.1f);
+	triangle3->SetVertices(vec3(-0.5f, 0.75f, 0.0f), 0.5f, 0.1f);
 	triangle3->SetColors(BLUE, BLUE, BLUE);
 
 	Triangle* triangle4 = new Triangle();
-	triangle4->SetVertices(Vector3(-0.5f, 0.35f, 0.0f), 0.5f, 0.1f);
+	triangle4->SetVertices(vec3(-0.5f, 0.35f, 0.0f), 0.5f, 0.1f);
 	triangle4->SetColors(BLUE, GREEN, BLUE);
 
 	Triangle* triangle5 = new Triangle();
-	triangle5->SetVertices(Vector3(0.5f, 0.25f, 0.0f), 0.5f, 0.1f);
+	triangle5->SetVertices(vec3(0.5f, 0.25f, 0.0f), 0.5f, 0.1f);
 	triangle5->SetColors(BLUE, BLUE, BLUE);
 
 	renderer->AttachDrawableObject(triangle);
