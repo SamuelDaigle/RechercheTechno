@@ -1,8 +1,10 @@
 #include "Scene.h"
 
 
-void Scene::Initialize()
+void Scene::Initialize(OpenGL* _ptrOpenGL)
 {
+	ptrOpenGL = _ptrOpenGL;
+
 	IObject* triangle = new Triangle();
 	triangle->Initialize();
 
@@ -20,13 +22,14 @@ void Scene::Destroy()
 	{
 		SAFE_DESTROY(sceneObject);
 	}
+	// Do not delete ptrOpenGL as the window contains it.
 }
 
 void Scene::Frame()
 {
 	input();
-	render();
 	update();
+	render();
 }
 
 void Scene::input()
@@ -38,6 +41,8 @@ void Scene::render()
 {
 	for each (IObject* sceneObject in renderedObjects)
 	{
+		sceneObject->Translate(0, 0, 0);
+		ptrOpenGL->SetShaderParameters(sceneObject->transformMatrix);
 		sceneObject->Render();
 	}
 }

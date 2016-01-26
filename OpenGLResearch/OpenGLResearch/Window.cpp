@@ -13,7 +13,7 @@ void Window::Initialize()
 	inputhandler->Initialize();
 
 	scene = new Scene();
-	scene->Initialize();
+	scene->Initialize(openGL);
 }
 
 void Window::Start()
@@ -21,7 +21,6 @@ void Window::Start()
 	while (!hasExited())
 	{
 		openGL->BeginScene();
-		openGL->UpdateShaderMatrix();
 		scene->Frame();
 		openGL->EndScene();
 	}

@@ -49,6 +49,10 @@ void Triangle::Translate(float _x, float _y, float _z)
 	/*vertices[0] += _x; vertices[1] += _y; vertices[2] = _z;
 	vertices[3] += _x; vertices[4] += _y; vertices[5] = _z;
 	vertices[6] += _x; vertices[7] += _y; vertices[8] = _z;*/
+
+	transformMatrix[0].w += _x;
+	transformMatrix[1].w += _y;
+	transformMatrix[2].w += _z;
 }
 
 void Triangle::Rotate(float _angle)
@@ -101,9 +105,9 @@ void Triangle::initializeBuffers()
 	indices = new unsigned int[indexCount];
 
 	// Bottom left.
-	vertices[0].x = -1.0f;  // Position.
-	vertices[0].y = -1.0f;
-	vertices[0].z = 0.0f;
+	vertices[0].x = -0.75f;  // Position.
+	vertices[0].y = -0.75f;
+	vertices[0].z = -0.0f;
 
 	vertices[0].r = 0.0f;  // Color.
 	vertices[0].g = 1.0f;
@@ -111,7 +115,7 @@ void Triangle::initializeBuffers()
 
 	// Top middle.
 	vertices[1].x = 0.0f;  // Position.
-	vertices[1].y = 1.0f;
+	vertices[1].y = 0.75f;
 	vertices[1].z = 0.0f;
 
 	vertices[1].r = 0.0f;  // Color.
@@ -119,13 +123,13 @@ void Triangle::initializeBuffers()
 	vertices[1].b = 0.0f;
 
 	// Bottom right.
-	vertices[2].x = 1.0f;  // Position.
-	vertices[2].y = -1.0f;
+	vertices[2].x = 0.75f;  // Position.
+	vertices[2].y = -0.75f;
 	vertices[2].z = 0.0f;
 
 	vertices[2].r = 0.0f;  // Color.
-	vertices[2].g = 1.0f;
-	vertices[2].b = 0.0f;
+	vertices[2].g = 0.0f;
+	vertices[2].b = 1.0f;
 
 	// Load the index array with data.
 	indices[0] = 0;  // Bottom left.
@@ -157,6 +161,8 @@ void Triangle::initializeBuffers()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount* sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
+
+	// delete vertices as they are stored in OpenGL's buffers.
 	delete[] vertices;
 	vertices = 0;
 

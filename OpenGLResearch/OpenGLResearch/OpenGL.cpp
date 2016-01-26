@@ -21,9 +21,12 @@ void OpenGL::AttachDrawableObject(Triangle* _triangle)
 	//renderedObjects.push_back(_triangle);
 }
 
-void OpenGL::UpdateShaderMatrix()
+void OpenGL::SetShaderParameters(mat4 _transformationMatrix)
 {
 	unsigned int shaderVariableLocation;
+
+	shaderVariableLocation = glGetUniformLocation(glProgram, "transformMatrix");
+	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(_transformationMatrix));
 
 	shaderVariableLocation = glGetUniformLocation(glProgram, "worldMatrix");
 	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(worldMatrix));

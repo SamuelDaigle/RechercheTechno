@@ -8,6 +8,8 @@
 
 using namespace std;
 
+#pragma once
+
 class OpenGL
 {
 public:
@@ -15,7 +17,7 @@ public:
 	void Destroy();
 
 	void AttachDrawableObject(Triangle* _triangle);
-	void UpdateShaderMatrix();
+	void SetShaderParameters(mat4 _transformationMatrix);
 	void LockRenderer();
 
 	void BeginScene();

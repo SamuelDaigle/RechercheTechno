@@ -10,16 +10,6 @@ using namespace std;
 
 Window* window;
 
-void display(void)
-{
-	window->Display();
-}
-
-void reshape(int _screenWidth, int _screenHeight)
-{
-	window->Reshape(_screenWidth, _screenHeight);
-}
-
 int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
@@ -33,9 +23,6 @@ int main(int argc, char* argv[])
 	window->Destroy();
 
 	delete window;
-	glutDisplayFunc(display);
-	glutReshapeFunc(reshape);
-	glutMainLoop();
 
 	return 0;
 }
