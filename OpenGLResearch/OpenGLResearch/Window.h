@@ -12,8 +12,6 @@ public:
 	void Destroy();
 
 	void Update();
-	void Display();
-	void Reshape(int _screenWidth, int _screenHeight);
 
 private:
 	void initializeWindow();

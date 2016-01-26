@@ -2,7 +2,7 @@
 
 void Camera::Initialize()
 {
-	position = vec3(0, 0, 3);
+	position = vec3(4, 3, 3);
 	target = vec3(0, 0, 0);
 	up = vec3(0, 1, 0);
 }
@@ -23,5 +23,5 @@ void Camera::Update()
 
 void Camera::LookAt(vec3 _targetPosition)
 {
-	view = lookAt(position, _targetPosition, vec3(0.0f, 0.0f, 1.0f));
+	view = lookAt(position, _targetPosition, vec3(0.0f, 1.0f, 0.0f));
 }

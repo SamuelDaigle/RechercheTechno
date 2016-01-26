@@ -41,7 +41,7 @@ void Scene::render()
 {
 	for each (IObject* sceneObject in renderedObjects)
 	{
-		sceneObject->Translate(0, 0, 0);
+		//sceneObject->Translate(0, 0, 0);
 		ptrOpenGL->SetShaderParameters(sceneObject->transformMatrix);
 		sceneObject->Render();
 	}

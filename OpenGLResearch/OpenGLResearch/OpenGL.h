@@ -18,11 +18,9 @@ public:
 
 	void AttachDrawableObject(Triangle* _triangle);
 	void SetShaderParameters(mat4 _transformationMatrix);
-	void LockRenderer();
 
 	void BeginScene();
 	void EndScene();
-	void Render();
 
 private:
 	void setBuffer(int _objectID, int _bufferID, GLfloat* _bufferData);

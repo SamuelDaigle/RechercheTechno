@@ -5,6 +5,9 @@ void OpenGL::Initialize()
 	camera = new Camera();
 	camera->Initialize();
 
+	glEnable(GL_DEPTH_TEST);
+	projectionMatrix = perspective<float>(radians(45.0f), (float)1000 / (float)800, 0.1f, 100.0f);;
+
 	ShaderLoader shaderLoader;
 	shaderLoader.LoadShader("color.vert", ShaderLoader::VERTEX);
 	shaderLoader.LoadShader("color.frag", ShaderLoader::FRAGMENTATION);
@@ -28,9 +31,6 @@ void OpenGL::SetShaderParameters(mat4 _transformationMatrix)
 	shaderVariableLocation = glGetUniformLocation(glProgram, "transformMatrix");
 	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(_transformationMatrix));
 
-	shaderVariableLocation = glGetUniformLocation(glProgram, "worldMatrix");
-	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(worldMatrix));
-
 	shaderVariableLocation = glGetUniformLocation(glProgram, "viewMatrix");
 	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(camera->view));
 
@@ -52,51 +52,14 @@ GLfloat* OpenGL::MatrixToFloatArray(mat4 _matrix)
 	return floatArray;
 }
 
-void OpenGL::LockRenderer()
-{
-	/*const int NB_BUFFER = 2;
-	int nbObject = renderedObjects.size();
-
-	vertexArrayObjID = new unsigned int[nbObject];
-	for (int i = 0; i < nbObject; i++)
-	{
-		vertexBufferObjID[i] = new unsigned int[2];
-	}
-
-	glGenVertexArrays(nbObject, vertexArrayObjID);
-
-	for (int i = 0; i < nbObject; i++)
-	{
-		// Select object array, 
-		glBindVertexArray(vertexArrayObjID[i]);
-		glGenBuffers(2, vertexBufferObjID[i]);
-
-		// Do not set vertex data nor color data as they will be set during rendering step.
-	}*/
-}
-
 void OpenGL::BeginScene()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	camera->Update();
 }
 
 void OpenGL::EndScene()
 {
 	glutSwapBuffers();
-}
-
-void OpenGL::Render()
-{
-	/*unsigned int buffer = 0;
-
-	camera->position.x++;
-	camera->Update();
-
-	UpdateShaderMatrix();
-
-	for (int i = 0; i < renderedObjects.size(); i++)
-	{
-		renderedObjects[0]->Render(i, vertexBufferObjID[i]);
-	}
-	glBindVertexArray(0);*/
 }

@@ -51,18 +51,6 @@ void Window::initializeWindow()
 	cout << "OpenGL version " << glGetString(GL_VERSION) << " supported" << endl;
 }
 
-void Window::Display()
-{
-	openGL->BeginScene();
-	openGL->Render();
-	openGL->EndScene();	
-}
-
-void Window::Reshape(int _screenWidth, int _screenHeight)
-{
-	glViewport(0, 0, (GLsizei)_screenWidth, (GLsizei)_screenHeight);
-}
-
 bool Window::hasExited()
 {
 	return inputhandler->IsKeyDown('e');

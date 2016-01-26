@@ -46,10 +46,6 @@ void Triangle::Render()
 
 void Triangle::Translate(float _x, float _y, float _z)
 {
-	/*vertices[0] += _x; vertices[1] += _y; vertices[2] = _z;
-	vertices[3] += _x; vertices[4] += _y; vertices[5] = _z;
-	vertices[6] += _x; vertices[7] += _y; vertices[8] = _z;*/
-
 	transformMatrix[0].w += _x;
 	transformMatrix[1].w += _y;
 	transformMatrix[2].w += _z;
