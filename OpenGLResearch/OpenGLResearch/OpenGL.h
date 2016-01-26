@@ -17,7 +17,7 @@ public:
 	void Destroy();
 
 	void AttachDrawableObject(Triangle* _triangle);
-	void SetShaderParameters(mat4 _transformationMatrix);
+	void SetShaderParameters(mat4 _worldMatrix);
 
 	void BeginScene();
 	void EndScene();
@@ -32,6 +32,5 @@ private:
 	GLuint glProgram;
 
 	Camera* camera;
-	mat4 worldMatrix;
 	mat4 projectionMatrix;
 };

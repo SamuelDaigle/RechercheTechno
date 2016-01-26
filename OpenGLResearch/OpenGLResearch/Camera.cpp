@@ -2,7 +2,7 @@
 
 void Camera::Initialize()
 {
-	position = vec3(4, 3, 3);
+	position = vec3(0, 0, -10);
 	target = vec3(0, 0, 0);
 	up = vec3(0, 1, 0);
 }
