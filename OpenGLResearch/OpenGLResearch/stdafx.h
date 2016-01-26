@@ -7,6 +7,8 @@
 #include <vector>
 #include "Color.h"
 #include "DynamicArray.h"
-#include "IManipulated.h"
+#include "IObject.h"
 
 using namespace glm;
+
+#define SAFE_DESTROY(ptr) { ptr->Destroy(); delete ptr; ptr = NULL; }

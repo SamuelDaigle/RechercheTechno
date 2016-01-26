@@ -73,11 +73,16 @@
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="OpenGL.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="color.frag" />
@@ -87,9 +92,8 @@
   <ItemGroup>
     <ClInclude Include="Color.h" />
     <ClInclude Include="DynamicArray.h" />
-    <ClInclude Include="IManipulated.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="SceneLogic.h" />
+    <ClInclude Include="IObject.h" />
+    <ClInclude Include="OpenGL.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Triangle.h" />

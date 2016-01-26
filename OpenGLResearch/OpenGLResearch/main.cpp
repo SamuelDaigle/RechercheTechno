@@ -1,6 +1,5 @@
 #include "Dependencies\glew\glew.h"
 #include "Dependencies\freeglut\freeglut.h"
-#include "ShaderLoader.h"
 #include "Window.h"
 
 #include <iostream>
@@ -11,39 +10,19 @@ using namespace std;
 
 Window* window;
 
-void update(int _i)
-{
-	window->Update();
-	glutPostRedisplay();
-	glutTimerFunc(0.1f, update, 0.1f);
-}
-
-void display(void)
-{
-	window->Display();
-}
-
-void reshape(int _screenWidth, int _screenHeight)
-{
-	window->Reshape(_screenWidth, _screenHeight);
-}
-
 int main(int argc, char* argv[])
 {
-	ShaderLoader shaderLoader;
+	glutInit(&argc, argv);
+
 	window = new Window();
 
-	glutInit(&argc, argv);
 	window->Initialize();
 
-	shaderLoader.LoadShader("color.vert", ShaderLoader::VERTEX);
-	shaderLoader.LoadShader("color.frag", ShaderLoader::FRAGMENTATION);
-	shaderLoader.CompileLoadedShaders();
+	window->Start();
 
-	glutTimerFunc( 0.1f, update, 0.1f);
-	glutDisplayFunc(display);
-	glutReshapeFunc(reshape);
-	glutMainLoop();
+	window->Destroy();
+
+	delete window;
 
 	return 0;
 }
