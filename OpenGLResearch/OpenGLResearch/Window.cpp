@@ -4,53 +4,59 @@
 
 void Window::Initialize()
 {
-	renderer = new Renderer();
-	renderer->Initialize();
+	initializeWindow();
 
-	Triangle* triangle = new Triangle();
-	triangle->SetVertices(vec3(0, 0, 0), 0.5f);
-	triangle->SetColors(RED, GREEN, BLUE);
+	openGL = new OpenGL();
+	openGL->Initialize();
 
-	Triangle* triangle2 = new Triangle();
-	triangle2->SetVertices(vec3(-0.5f, -0.5f, 0.0f), 0.25f);
-	triangle2->SetColors(RED, TRANSPARENT, BLUE);
+	inputhandler = new InputHandler();
+	inputhandler->Initialize();
 
-	Triangle* triangle3 = new Triangle();
-	triangle3->SetVertices(vec3(-0.5f, 0.75f, 0.0f), 0.5f, 0.1f);
-	triangle3->SetColors(BLUE, BLUE, BLUE);
-
-	Triangle* triangle4 = new Triangle();
-	triangle4->SetVertices(vec3(-0.5f, 0.35f, 0.0f), 0.5f, 0.1f);
-	triangle4->SetColors(BLUE, GREEN, BLUE);
-
-	Triangle* triangle5 = new Triangle();
-	triangle5->SetVertices(vec3(0.5f, 0.25f, 0.0f), 0.5f, 0.1f);
-	triangle5->SetColors(BLUE, BLUE, BLUE);
-
-	renderer->AttachDrawableObject(triangle);
-	renderer->AttachDrawableObject(triangle2);
-	renderer->AttachDrawableObject(triangle3);
-	renderer->AttachDrawableObject(triangle4);
-	renderer->AttachDrawableObject(triangle5);
-
-	renderer->LockRenderer();
-	
+	scene = new Scene();
+	scene->Initialize();
 }
 
-void Window::Update()
+void Window::Start()
 {
-	manageInput();
-	renderer->renderedObjects[0]->Rotate(0.00000818125f);
+	while (!hasExited())
+	{
+		openGL->BeginScene();
+		openGL->UpdateShaderMatrix();
+		scene->Frame();
+		openGL->EndScene();
+	}
+}
+
+void Window::Destroy()
+{
+	SAFE_DESTROY(openGL);
+	SAFE_DESTROY(inputhandler);
+	SAFE_DESTROY(scene);
+}
+
+void Window::initializeWindow()
+{
+	screenWidth = 1000;
+	screenHeight = 800;
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+	glutInitWindowSize(screenWidth, screenHeight);
+	glutCreateWindow("OpenGL research");
+	GLenum err = glewInit();
+	if (GLEW_OK != err)
+	{
+		/* Problem: glewInit failed, something is seriously wrong. */
+		cout << "glewInit failed, aborting." << endl;
+		exit(1);
+	}
+	cout << "Status: Using GLEW " << glewGetString(GLEW_VERSION) << endl;
+	cout << "OpenGL version " << glGetString(GL_VERSION) << " supported" << endl;
 }
 
 void Window::Display()
 {
-	// clear the screen
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	renderer->Render();
-
-	glutSwapBuffers();
+	openGL->BeginScene();
+	openGL->Render();
+	openGL->EndScene();	
 }
 
 void Window::Reshape(int _screenWidth, int _screenHeight)
@@ -58,7 +64,7 @@ void Window::Reshape(int _screenWidth, int _screenHeight)
 	glViewport(0, 0, (GLsizei)_screenWidth, (GLsizei)_screenHeight);
 }
 
-void Window::manageInput()
+bool Window::hasExited()
 {
-
+	return inputhandler->IsKeyDown('e');
 }
