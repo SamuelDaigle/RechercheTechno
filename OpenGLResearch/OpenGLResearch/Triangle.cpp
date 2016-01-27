@@ -1,10 +1,9 @@
 #include "Triangle.h"
 
-void Triangle::Initialize()
+void Triangle::Initialize(OpenGL* _ptrOpenGL)
 {
-	/*vec3 position(0, 0, 0);
-	SetVertices(position, 0.5f);
-	SetColors(RED);*/
+	ptrOpenGL = _ptrOpenGL;
+
 	scaling.x = 1;
 	scaling.y = 1;
 	scaling.z = 1;
@@ -60,7 +59,7 @@ void Triangle::Rotate(float _angleX, float _angleY, float _angleZ)
 	rotation.z += _angleY;
 }
 
-void Triangle::Reshape(float _scaleX, float _scaleY, float _scaleZ)
+void Triangle::Scale(float _scaleX, float _scaleY, float _scaleZ)
 {
 	scaling.x += _scaleX;
 	scaling.y += _scaleY;

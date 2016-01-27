@@ -8,6 +8,7 @@
 #include "Color.h"
 #include "DynamicArray.h"
 #include "IObject.h"
+#include "OpenGL.h"
 
 using namespace glm;
 

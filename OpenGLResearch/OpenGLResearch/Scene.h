@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Triangle.h"
 #include "OpenGL.h"
+#include "Composite.h"
 
 #pragma once
 class Scene
@@ -17,6 +18,6 @@ private:
 	void render();
 
 	OpenGL* ptrOpenGL;
-	vector<IObject*> renderedObjects;
+	Composite* rootObject;
 };
 
