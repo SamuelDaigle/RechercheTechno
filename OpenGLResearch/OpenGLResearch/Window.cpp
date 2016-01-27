@@ -4,58 +4,54 @@
 
 void Window::Initialize()
 {
-	Triangle triangle;
-	triangle.SetColors(RED, GREEN, BLUE);
+	initializeWindow();
 
-	// Allocate Vertex Array Objects
-	glGenVertexArrays(2, &vertexArrayObjID[0]);
-	// Setup first Vertex Array Object
-	glBindVertexArray(vertexArrayObjID[0]);
-	glGenBuffers(2, vertexBufferObjID);
+	openGL = new OpenGL();
+	openGL->Initialize();
 
-	// VBO for vertex data
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjID[0]);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), triangle.vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer((GLuint)0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(0);
+	inputhandler = new InputHandler();
+	inputhandler->Initialize();
 
-	// VBO for colour data
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjID[1]);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), triangle.colours, GL_STATIC_DRAW);
-	glVertexAttribPointer((GLuint)1, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(1);
-
-	glBindVertexArray(0);
+	scene = new Scene();
+	scene->Initialize(openGL);
 }
 
-void Window::Update()
+void Window::Start()
 {
-	manageInput();
+	while (!hasExited())
+	{
+		openGL->BeginScene();
+		scene->Frame();
+		openGL->EndScene();
+	}
 }
 
-void Window::Display()
+void Window::Destroy()
 {
-	// clear the screen
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	glBindVertexArray(vertexArrayObjID[0]);	// First VAO
-	glDrawArrays(GL_TRIANGLES, 0, 3);	// draw first object
-
-	glBindVertexArray(vertexArrayObjID[1]);		// select second VAO
-	glVertexAttrib3f((GLuint)1, 1.0, 0.0, 0.0); // set constant color attribute
-	glDrawArrays(GL_TRIANGLES, 0, 3);	// draw second object
-
-	glBindVertexArray(0);
-
-	glutSwapBuffers();
+	SAFE_DESTROY(openGL);
+	SAFE_DESTROY(inputhandler);
+	SAFE_DESTROY(scene);
 }
 
-void Window::Reshape(int _screenWidth, int _screenHeight)
+void Window::initializeWindow()
 {
-	glViewport(0, 0, (GLsizei)_screenWidth, (GLsizei)_screenHeight);
+	screenWidth = 1000;
+	screenHeight = 800;
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+	glutInitWindowSize(screenWidth, screenHeight);
+	glutCreateWindow("OpenGL research");
+	GLenum err = glewInit();
+	if (GLEW_OK != err)
+	{
+		/* Problem: glewInit failed, something is seriously wrong. */
+		cout << "glewInit failed, aborting." << endl;
+		exit(1);
+	}
+	cout << "Status: Using GLEW " << glewGetString(GLEW_VERSION) << endl;
+	cout << "OpenGL version " << glGetString(GL_VERSION) << " supported" << endl;
 }
 
-void Window::manageInput()
+bool Window::hasExited()
 {
-
+	return inputhandler->IsKeyDown('e');
 }

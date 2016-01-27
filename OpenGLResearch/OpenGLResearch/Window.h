@@ -1,21 +1,28 @@
 #include "stdafx.h"
-#include "Triangle.h"
+#include "OpenGL.h"
+#include "InputHandler.h"
+#include "Scene.h"
 
 #pragma once
 class Window
 {
 public:
 	void Initialize();
+	void Start();
+	void Destroy();
+
 	void Update();
-	void Display();
-	void Reshape(int _screenWidth, int _screenHeight);
 
 private:
+	void initializeWindow();
 	void manageInput();
+	bool hasExited();
 
-	// two vertex array objects, one for each object drawn
-	unsigned int vertexArrayObjID[2];
-	// three vertex buffer objects in this example
-	unsigned int vertexBufferObjID[3];
+	OpenGL* openGL;
+	InputHandler* inputhandler;
+	Scene* scene;
+
+	int screenWidth;
+	int screenHeight;
 };
 

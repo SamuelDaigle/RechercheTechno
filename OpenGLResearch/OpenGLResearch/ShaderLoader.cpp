@@ -45,23 +45,22 @@ void ShaderLoader::LoadShader(char* _filepath, ShaderType _shaderType)
 	delete[] shaderFile; // dont forget to free allocated memory
 }
 
-void ShaderLoader::CompileLoadedShaders()
+void ShaderLoader::CompileLoadedShaders(GLuint& _glProgram)
 {
-	GLuint glProgram;
 
 	compileShader(vertexShader);
 	compileShader(fragShader);
 
-	glProgram = glCreateProgram();
+	_glProgram = glCreateProgram();
 
-	glBindAttribLocation(glProgram, 0, "in_Position");
-	glBindAttribLocation(glProgram, 1, "in_Color");
+	glBindAttribLocation(_glProgram, 0, "in_Position");
+	glBindAttribLocation(_glProgram, 1, "in_Color");
 
-	glAttachShader(glProgram, vertexShader);
-	glAttachShader(glProgram, fragShader);
+	glAttachShader(_glProgram, vertexShader);
+	glAttachShader(_glProgram, fragShader);
 
-	glLinkProgram(glProgram);
-	glUseProgram(glProgram);
+	glLinkProgram(_glProgram);
+	glUseProgram(_glProgram);
 }
 
 void ShaderLoader::compileShader(GLuint& _shader)
