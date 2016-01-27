@@ -22,11 +22,8 @@ public:
 	
 	void Render();
 	void Translate(float _x, float _y, float _z);
-	void Rotate(float _angle);
-	void Reshape(float _scale);
-
-	vec3 FindCenter();
-
+	void Rotate(float _angleX, float _angleY, float _angleZ);
+	void Reshape(float _scaleX, float _scaleY, float _scaleZ);
 private:
 	void initializeBuffers();
 	void shutdownBuffers();

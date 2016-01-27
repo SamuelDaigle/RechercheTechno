@@ -1,5 +1,5 @@
 #include "InputHandler.h"
-
+#include <windows.h>
 
 void InputHandler::Initialize()
 {
@@ -13,7 +13,7 @@ void InputHandler::Destroy()
 
 bool InputHandler::IsKeyDown(unsigned char _key)
 {
-	return false;
+	return ::GetAsyncKeyState(VK_ESCAPE);
 }
 
 void InputHandler::OnKeyDown(unsigned char _key)
