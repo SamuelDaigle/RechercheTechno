@@ -1,5 +1,3 @@
-#include "stdafx.h"
-#include "Triangle.h"
 #include "Camera.h"
 #include "ShaderLoader.h"
 
@@ -16,7 +14,6 @@ public:
 	void Initialize();
 	void Destroy();
 
-	void AttachDrawableObject(Triangle* _triangle);
 	void SetShaderParameters(mat4 _worldMatrix);
 
 	void BeginScene();

@@ -1,5 +1,6 @@
-#include "stdafx.h"
 #include "Dependencies/glm/gtc/matrix_transform.hpp"
+
+using namespace glm;
 
 #pragma once
 class Camera

@@ -12,7 +12,7 @@ private:
 	};
 
 public:
-	void Initialize();
+	void Initialize(OpenGL* _ptrOpenGL);
 	void Destroy();
 
 	void SetVertices(vec3 _position, float _size);
@@ -23,7 +23,7 @@ public:
 	void Render();
 	void Translate(float _x, float _y, float _z);
 	void Rotate(float _angleX, float _angleY, float _angleZ);
-	void Reshape(float _scaleX, float _scaleY, float _scaleZ);
+	void Scale(float _scaleX, float _scaleY, float _scaleZ);
 private:
 	void initializeBuffers();
 	void shutdownBuffers();

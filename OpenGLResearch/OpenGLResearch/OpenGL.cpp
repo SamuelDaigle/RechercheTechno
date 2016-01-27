@@ -16,12 +16,12 @@ void OpenGL::Initialize()
 
 void OpenGL::Destroy()
 {
-	SAFE_DESTROY(camera);
-}
-
-void OpenGL::AttachDrawableObject(Triangle* _triangle)
-{
-	//renderedObjects.push_back(_triangle);
+	if (camera)
+	{
+		camera->Destroy();
+		delete camera;
+		camera = NULL;
+	}
 }
 
 void OpenGL::SetShaderParameters(mat4 _worldMatrix)

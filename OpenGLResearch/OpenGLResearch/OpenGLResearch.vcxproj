@@ -69,10 +69,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Composite.h" />
     <ClInclude Include="DynamicArray.hpp">
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Composite.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGL.cpp" />
