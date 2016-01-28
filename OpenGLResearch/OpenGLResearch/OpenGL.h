@@ -14,14 +14,15 @@ public:
 	void Initialize();
 	void Destroy();
 
-	void SetShaderParameters(mat4 _worldMatrix);
+	GLuint GetProgram();
+	mat4& GetViewMatrix();
+	mat4& GetProjMatrix();
 
 	void BeginScene();
 	void EndScene();
 
 private:
 	void setBuffer(int _objectID, int _bufferID, GLfloat* _bufferData);
-	GLfloat* MatrixToFloatArray(mat4 _matrix);
 
 	unsigned int* vertexArrayObjID;
 	unsigned int* vertexBufferObjID[2];

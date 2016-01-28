@@ -38,7 +38,7 @@ void Triangle::SetColors(Color _color1, Color _color2, Color _color3)
 	colours[6] = _color3.r; colours[7] = _color3.g; colours[8] = _color3.b;*/
 }
 
-void Triangle::Render()
+void Triangle::Render(IShader& _shader)
 {
 	glBindVertexArray(vertexArrayId);
 	glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);

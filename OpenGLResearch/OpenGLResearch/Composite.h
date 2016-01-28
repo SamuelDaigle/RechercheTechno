@@ -10,7 +10,7 @@ public:
 
 	virtual void Destroy() override;
 
-	virtual void Render() override;
+	virtual void Render(IShader& _shader) override;
 
 	virtual void Translate(float _x, float _y, float _z) override;
 

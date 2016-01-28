@@ -24,32 +24,19 @@ void OpenGL::Destroy()
 	}
 }
 
-void OpenGL::SetShaderParameters(mat4 _worldMatrix)
+GLuint OpenGL::GetProgram()
 {
-	unsigned int shaderVariableLocation;
-
-	shaderVariableLocation = glGetUniformLocation(glProgram, "worldMatrix");
-	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(_worldMatrix));
-
-	shaderVariableLocation = glGetUniformLocation(glProgram, "viewMatrix");
-	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(camera->view));
-
-	shaderVariableLocation = glGetUniformLocation(glProgram, "projectionMatrix");
-	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(projectionMatrix));
+	return glProgram;
 }
 
-GLfloat* OpenGL::MatrixToFloatArray(mat4 _matrix)
+mat4& OpenGL::GetViewMatrix()
 {
-	GLfloat* floatArray = new GLfloat[16];
-	const int MATRIX_SIZE = 4;
-	for (int i = 0; i < MATRIX_SIZE; i++)
-	{
-		for (int j = 0; j < MATRIX_SIZE; j++)
-		{
-			floatArray[j + i * MATRIX_SIZE] = _matrix[j][i];
-		}
-	}
-	return floatArray;
+	return camera->view;
+}
+
+mat4& OpenGL::GetProjMatrix()
+{
+	return projectionMatrix;
 }
 
 void OpenGL::BeginScene()
