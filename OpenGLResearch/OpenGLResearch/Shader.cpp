@@ -15,9 +15,9 @@ Shader::Shader(unsigned int _program)
 
 	glProgram = glCreateProgram();
 
-	glBindAttribLocation(glProgram, 0, "in_Position");
-	glBindAttribLocation(glProgram, 1, "in_Normal");
-	glBindAttribLocation(glProgram, 2, "in_TexCoord");
+	glBindAttribLocation(glProgram, 0, "Position");
+	glBindAttribLocation(glProgram, 1, "Normal");
+	glBindAttribLocation(glProgram, 2, "TexCoords");
 
 	glAttachShader(glProgram, vertShaderID);
 	glAttachShader(glProgram, fragShaderID);

@@ -20,7 +20,6 @@ public:
 	~ShaderLoader();
 
 	GLuint LoadShader(char* _filepath, ShaderType _shaderType);
-	void CompileLoadedShaders(GLuint& _glProgram);
 	void CompileShader(GLuint& _shader);
 
 private:

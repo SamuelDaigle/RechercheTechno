@@ -24,9 +24,10 @@ class Mesh {
 public:
 	vector<Vertex> vertices;
 	vector<GLuint> indices;
-	vector<GLuint> textureLocations;
+	vector<GLuint> diffuseLocations;
+	vector<GLuint> specularLocations;
 
-	Mesh(vector<Vertex> _vertices, vector<GLuint> _indices, vector<GLuint> _textureLocations); 
+	Mesh(vector<Vertex> _vertices, vector<GLuint> _indices, vector<GLuint> _diffuseLocations, vector<GLuint> _specularLocations);
 	void Draw(IShader& shader);
 
 private:

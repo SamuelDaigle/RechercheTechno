@@ -1,45 +1,38 @@
 #include "Mesh.h"
 
-Mesh::Mesh(vector<Vertex> _vertices, vector<GLuint> _indices, vector<GLuint> _textureLocations)
+Mesh::Mesh(vector<Vertex> _vertices, vector<GLuint> _indices, vector<GLuint> _diffuseLocations, vector<GLuint> _specularLocations)
 {
 	vertices = _vertices;
 	indices = _indices;
-	textureLocations = _textureLocations;
+	diffuseLocations = _diffuseLocations;
+	specularLocations = _specularLocations;
 
 	setupMesh();
 }
 
 void Mesh::Draw(IShader& shader)
 {
-	GLuint diffuseNr = 1;
+	/*GLuint diffuseNr = 1;
 	GLuint specularNr = 1;
-	for (GLuint i = 0; i < textureLocations.size(); i++)
+	for (GLuint i = 0; i < diffuseLocations.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i);
-		stringstream ss;
-		string number;
-		string name = "texture_specular"; //textureLocations[i].type;
-		if (name == "texture_diffuse")
-			ss << diffuseNr++;
-		else if (name == "texture_specular")
-			ss << specularNr++;
-		number = ss.str();
-
-		glUniform1i(glGetUniformLocation(shader.glProgram, (name + number).c_str()), i);
-		glBindTexture(GL_TEXTURE_2D, textureLocations[i]);
+		glUniform1i(glGetUniformLocation(shader.glProgram, "material.diffuse1"), i);
+		glBindTexture(GL_TEXTURE_2D, diffuseLocations[i]);
 	}
 
-	glUniform1f(glGetUniformLocation(shader.glProgram, "material.shininess"), 16.0f);
+	for (GLuint i = diffuseLocations.size(); i < diffuseLocations.size() + specularLocations.size(); i++)
+	{
+		glActiveTexture(GL_TEXTURE0 + i);
+		glUniform1i(glGetUniformLocation(shader.glProgram, "material.specular1"),i);
+		glBindTexture(GL_TEXTURE_2D, specularLocations[i - diffuseLocations.size()]);
+	}
+
+	glUniform1f(glGetUniformLocation(shader.glProgram, "material.shininess"), 16.0f);*/
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
-
-	for (GLuint i = 0; i < textureLocations.size(); i++)
-	{
-		glActiveTexture(GL_TEXTURE0 + i);
-		glBindTexture(GL_TEXTURE_2D, 0);
-	}
 }
 
 void Mesh::setupMesh()

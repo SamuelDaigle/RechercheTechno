@@ -34,6 +34,11 @@ mat4& OpenGL::GetProjMatrix()
 	return projectionMatrix;
 }
 
+Camera* OpenGL::GetCamera()
+{
+	return camera;
+}
+
 void OpenGL::BeginScene()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

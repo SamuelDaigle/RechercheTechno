@@ -48,7 +48,8 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene, TextureLoader* _text
 {
 	vector<Vertex> vertices;
 	vector<GLuint> indices;
-	vector<GLuint> textures;
+	vector<GLuint> diffuseMaps;
+	vector<GLuint> specularMaps;
 
 	// Walk through each of the mesh's vertices
 	for (GLuint i = 0; i < mesh->mNumVertices; i++)
@@ -78,6 +79,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene, TextureLoader* _text
 		}
 		else
 			vertex.TexCoords = vec2(0.0f, 0.0f);
+
 		vertices.push_back(vertex);
 	}
 	for (GLuint i = 0; i < mesh->mNumFaces; i++)
@@ -87,18 +89,17 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene, TextureLoader* _text
 			indices.push_back(face.mIndices[j]);
 	}
 	// Process materials
-	if (mesh->mMaterialIndex >= 0)
+	/*for (int i = 0; i < mesh->mMaterialIndex; i++)
 	{
-		aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
+		aiMaterial* material = scene->mMaterials[i];
 
-		vector<GLuint> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, _textureLoader);
-		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+		vector<GLuint> diffuses = loadMaterialTextures(material, aiTextureType_DIFFUSE, _textureLoader);
+		diffuseMaps.insert(diffuseMaps.end(), diffuses.begin(), diffuses.end());
+		vector<GLuint> speculars = loadMaterialTextures(material, aiTextureType_SPECULAR, _textureLoader);
+		diffuseMaps.insert(diffuseMaps.end(), speculars.begin(), speculars.end());
+	}*/
 
-		vector<GLuint> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, _textureLoader);
-		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-	}
-
-	return Mesh(vertices, indices, textures);
+	return Mesh(vertices, indices, diffuseMaps, specularMaps);
 }
 
 vector<GLuint> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, TextureLoader* _textureLoader)
@@ -109,8 +110,12 @@ vector<GLuint> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, 
 	{
 		aiString str;
 		mat->GetTexture(type, i, &str);
+
+		aiString dirStr(directory);
+		dirStr.Append("/");
+		dirStr.Append(str.C_Str());
 		
-		textures.push_back(_textureLoader->GetTexture(str.C_Str()));
+		textures.push_back(_textureLoader->GetTexture(dirStr.C_Str()));
 	}
 
 	return textures;

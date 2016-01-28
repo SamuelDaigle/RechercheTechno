@@ -2,7 +2,7 @@
 
 void Planet::Initialize(TextureLoader* _textureLoader)
 {
-	model = new Model("../Content//house/house.obj", _textureLoader);
+	model = new Model("../Content/nanosuit/nanosuit.obj", _textureLoader);
 }
 
 void Planet::Destroy()
