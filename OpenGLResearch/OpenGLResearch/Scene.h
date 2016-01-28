@@ -3,6 +3,7 @@
 #include "OpenGL.h"
 #include "Composite.h"
 #include "Planet.h"
+#include "Shader.h"
 
 #pragma once
 class Scene
@@ -20,5 +21,6 @@ private:
 
 	OpenGL* ptrOpenGL;
 	Composite* rootObject;
+	IShader* basicShader;
 };
 

@@ -9,9 +9,9 @@ void Planet::Destroy()
 {
 }
 
-void Planet::Render()
+void Planet::Render(IShader& _shader)
 {
-	model->Draw();
+	model->Draw(_shader);
 }
 
 void Planet::Translate(float _x, float _y, float _z)

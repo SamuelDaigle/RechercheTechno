@@ -82,6 +82,7 @@
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="TextureBank.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="Triangle.cpp" />
@@ -89,10 +90,12 @@
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="IShader.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="TextureBank.h" />
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="VertexType.h" />

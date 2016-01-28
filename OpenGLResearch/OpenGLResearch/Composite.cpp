@@ -13,12 +13,12 @@ void Composite::Destroy()
 	}
 }
 
-void Composite::Render()
+void Composite::Render(IShader& _shader)
 {
 	for each (IObject* childObject in childObjects)
 	{
-		//ptrOpenGL->SetShaderParameters(childObject->GetWorldMatrix());
-		childObject->Render();
+		_shader.SetWorldMatrix(childObject->GetWorldMatrix());
+		childObject->Render(_shader);
 	}
 }
 

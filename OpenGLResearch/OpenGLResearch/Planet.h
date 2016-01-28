@@ -10,7 +10,7 @@ public:
 
 	void Destroy() override;
 
-	void Render() override;
+	void Render(IShader& _shader) override;
 
 	void Translate(float _x, float _y, float _z) override;
 
