@@ -18,7 +18,7 @@ void Mesh::Draw(IShader& shader)
 		glActiveTexture(GL_TEXTURE0 + i);
 		stringstream ss;
 		string number;
-		string name = "texture_diffuse"; //textureLocations[i].type;
+		string name = "texture_specular"; //textureLocations[i].type;
 		if (name == "texture_diffuse")
 			ss << diffuseNr++;
 		else if (name == "texture_specular")

@@ -6,12 +6,7 @@ void OpenGL::Initialize()
 	camera->Initialize();
 
 	glEnable(GL_DEPTH_TEST);
-	projectionMatrix = perspective<float>(radians(45.0f), (float)1000 / (float)800, 0.1f, 100.0f);;
-
-	ShaderLoader shaderLoader;
-	shaderLoader.LoadShader("color.vert", ShaderLoader::VERTEX);
-	shaderLoader.LoadShader("color.frag", ShaderLoader::FRAGMENTATION);
-	shaderLoader.CompileLoadedShaders(glProgram);
+	projectionMatrix = perspective<float>(radians(45.0f), (float)1000 / (float)800, 0.1f, 100.0f);
 }
 
 void OpenGL::Destroy()

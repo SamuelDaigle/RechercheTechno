@@ -10,7 +10,7 @@ ShaderLoader::~ShaderLoader()
 {
 }
 
-void ShaderLoader::LoadShader(char* _filepath, ShaderType _shaderType)
+GLuint ShaderLoader::LoadShader(char* _filepath, ShaderType _shaderType)
 {
 	GLuint shader;
 
@@ -33,23 +33,20 @@ void ShaderLoader::LoadShader(char* _filepath, ShaderType _shaderType)
 
 	glShaderSource(shader, 1, &shaderFile, &shaderLength);
 
-	if (_shaderType == VERTEX)
-	{
-		vertexShader = shader;
-	}
-	else if (_shaderType == FRAGMENTATION)
-	{
-		fragShader = shader;
-	}
-
 	delete[] shaderFile; // dont forget to free allocated memory
+
+	CompileShader(shader);
+
+
+
+	return shader;
 }
 
 void ShaderLoader::CompileLoadedShaders(GLuint& _glProgram)
 {
 
-	compileShader(vertexShader);
-	compileShader(fragShader);
+	CompileShader(vertexShader);
+	CompileShader(fragShader);
 
 	_glProgram = glCreateProgram();
 
@@ -63,7 +60,7 @@ void ShaderLoader::CompileLoadedShaders(GLuint& _glProgram)
 	glUseProgram(_glProgram);
 }
 
-void ShaderLoader::compileShader(GLuint& _shader)
+void ShaderLoader::CompileShader(GLuint& _shader)
 {
 	GLint compiled;
 

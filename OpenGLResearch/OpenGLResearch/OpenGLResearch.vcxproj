@@ -102,8 +102,8 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="color.frag" />
-    <None Include="color.vert" />
+    <None Include="model.frag" />
+    <None Include="model.vert" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

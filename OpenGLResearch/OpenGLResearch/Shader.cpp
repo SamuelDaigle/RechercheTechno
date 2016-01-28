@@ -4,6 +4,25 @@
 Shader::Shader(unsigned int _program)
 {
 	glProgram = _program;
+
+	ShaderLoader shaderLoader;
+
+	GLuint vertShaderID = shaderLoader.LoadShader("model.vert", ShaderLoader::VERTEX);
+	GLuint fragShaderID = shaderLoader.LoadShader("model.frag", ShaderLoader::FRAGMENTATION);
+
+	shaderLoader.CompileShader(vertShaderID);
+	shaderLoader.CompileShader(fragShaderID);
+
+	glProgram = glCreateProgram();
+
+	glBindAttribLocation(glProgram, 0, "in_Position");
+	glBindAttribLocation(glProgram, 1, "in_Normal");
+	glBindAttribLocation(glProgram, 2, "in_TexCoord");
+
+	glAttachShader(glProgram, vertShaderID);
+	glAttachShader(glProgram, fragShaderID);
+
+	glLinkProgram(glProgram);
 }
 
 

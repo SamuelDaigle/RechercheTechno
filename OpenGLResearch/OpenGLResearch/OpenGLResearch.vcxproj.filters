@@ -69,10 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="color.vert">
+    <None Include="model.frag">
       <Filter>Shader</Filter>
     </None>
-    <None Include="color.frag">
+    <None Include="model.vert">
       <Filter>Shader</Filter>
     </None>
   </ItemGroup>
