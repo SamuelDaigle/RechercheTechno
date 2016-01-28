@@ -1,0 +1,48 @@
+#include "Shader.h"
+
+
+Shader::Shader(unsigned int _program)
+{
+	glProgram = _program;
+}
+
+
+Shader::~Shader()
+{
+}
+
+void Shader::SetWorldMatrix(mat4 _worldMatrix)
+{
+	unsigned int shaderVariableLocation;
+	shaderVariableLocation = glGetUniformLocation(glProgram, "worldMatrix");
+	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(_worldMatrix));
+}
+
+void Shader::SetViewMatrix(mat4 _viewMatrix)
+{
+	unsigned int shaderVariableLocation;
+	shaderVariableLocation = glGetUniformLocation(glProgram, "viewMatrix");
+	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(_viewMatrix));
+}
+
+void Shader::SetProjectionMatrix(mat4 _projMatrix)
+{
+	unsigned int shaderVariableLocation;
+	shaderVariableLocation = glGetUniformLocation(glProgram, "projectionMatrix");
+	glUniformMatrix4fv(shaderVariableLocation, 1, false, MatrixToFloatArray(_projMatrix));
+}
+
+GLfloat* Shader::MatrixToFloatArray(mat4 _matrix)
+{
+	GLfloat* floatArray = new GLfloat[16];
+	const int MATRIX_SIZE = 4;
+	for (int i = 0; i < MATRIX_SIZE; i++)
+	{
+		for (int j = 0; j < MATRIX_SIZE; j++)
+		{
+			floatArray[j + i * MATRIX_SIZE] = _matrix[j][i];
+		}
+	}
+	return floatArray;
+}
+

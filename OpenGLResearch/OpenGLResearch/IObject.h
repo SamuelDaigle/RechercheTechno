@@ -4,6 +4,7 @@
 #include "Dependencies\glm\gtx\euler_angles.hpp"
 #include "Dependencies\glm\gtx\transform.hpp"
 #include "TextureLoader.h"
+#include "IShader.h"
 
 using namespace glm;
 
@@ -13,7 +14,7 @@ public:
 	virtual void Initialize(TextureLoader* _textureLoader) = 0;
 	virtual void Destroy() = 0;
 
-	virtual void Render() = 0;
+	virtual void Render(IShader& _shader) = 0;
 	virtual void Translate(float _x, float _y, float _z) = 0;
 	virtual void Rotate(float _angleX, float _angleY, float _angleZ) = 0;
 	virtual void Scale(float _scaleX, float _scaleY, float _scaleZ) = 0;

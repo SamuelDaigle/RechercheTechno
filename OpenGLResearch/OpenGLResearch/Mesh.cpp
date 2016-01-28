@@ -9,7 +9,7 @@ Mesh::Mesh(vector<Vertex> _vertices, vector<GLuint> _indices, vector<GLuint> _te
 	setupMesh();
 }
 
-void Mesh::Draw(/*Shader shader*/)
+void Mesh::Draw(IShader& shader)
 {
 	GLuint diffuseNr = 1;
 	GLuint specularNr = 1;
@@ -25,11 +25,11 @@ void Mesh::Draw(/*Shader shader*/)
 			ss << specularNr++;
 		number = ss.str();
 
-		//glUniform1i(glGetUniformLocation(shader.Program, (name + number).c_str()), i);
+		glUniform1i(glGetUniformLocation(shader.glProgram, (name + number).c_str()), i);
 		glBindTexture(GL_TEXTURE_2D, textureLocations[i]);
 	}
 
-	//glUniform1f(glGetUniformLocation(shader.Program, "material.shininess"), 16.0f);
+	glUniform1f(glGetUniformLocation(shader.glProgram, "material.shininess"), 16.0f);
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

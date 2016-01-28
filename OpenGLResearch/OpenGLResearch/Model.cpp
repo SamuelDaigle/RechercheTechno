@@ -5,10 +5,10 @@ Model::Model(const char* path, TextureLoader* _textureLoader)
 	loadModel(path, _textureLoader);
 }
 
-void Model::Draw(/*Shader shader*/)
+void Model::Draw(IShader& shader)
 {
 	for (GLuint i = 0; i < meshes.size(); i++)
-		meshes[i].Draw(/*shader*/);
+		meshes[i].Draw(shader);
 }
 
 void Model::loadModel(string path, TextureLoader* _textureLoader)

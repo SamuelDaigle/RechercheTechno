@@ -27,7 +27,7 @@ class Model
 {
 public:
 	Model(const char* path, TextureLoader* _textureLoader);
-	void Draw(/*Shader shader*/);
+	void Draw(IShader& shader);
 
 private:
 	vector<Mesh> meshes;

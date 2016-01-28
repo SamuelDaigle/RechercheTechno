@@ -26,6 +26,8 @@ void Scene::Initialize(OpenGL* _ptrOpenGL)
 	rootObject->Add(triangle);
 	rootObject->Add(triangle2);
 	rootObject->Add(planet);
+
+	basicShader = new Shader(ptrOpenGL->GetProgram());
 }
 
 void Scene::Destroy()
@@ -50,7 +52,9 @@ void Scene::input()
 void Scene::render()
 {
 	rootObject->Translate(0, 0.001f, 0);
-	rootObject->Render();
+	basicShader->SetViewMatrix(ptrOpenGL->GetViewMatrix());
+	basicShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
+	rootObject->Render(*basicShader);
 }
 
 void Scene::update()
