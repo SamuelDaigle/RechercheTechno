@@ -1,8 +1,41 @@
-﻿Build started 2016-01-28 5:23:56 PM.
+﻿Build started 2016-01-28 5:32:44 PM.
      1>Project "D:\Github\RechercheTechno\OpenGLResearch\OpenGLResearch\OpenGLResearch.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files\Visual Studio 2013\VC\bin\CL.exe /c /ID:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Mesh.cpp
+         D:\Program Files\Visual Studio 2013\VC\bin\CL.exe /c /ID:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp Composite.cpp InputHandler.cpp Mesh.cpp Model.cpp OpenGL.cpp Planet.cpp Scene.cpp Shader.cpp ShaderLoader.cpp TextureBank.cpp TextureLoader.cpp Triangle.cpp Vertex.cpp Window.cpp main.cpp
+         main.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : see previous definition of 'TRANSPARENT'
+         Window.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : see previous definition of 'TRANSPARENT'
+         Vertex.cpp
+         Triangle.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : see previous definition of 'TRANSPARENT'
+         TextureLoader.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\textureloader.cpp(36): warning C4101: 'height' : unreferenced local variable
+     1>d:\github\recherchetechno\openglresearch\openglresearch\textureloader.cpp(36): warning C4101: 'width' : unreferenced local variable
+         TextureBank.cpp
+         ShaderLoader.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\shaderloader.cpp(66): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'unsigned int', possible loss of data
+         Shader.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : see previous definition of 'TRANSPARENT'
+         Scene.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : see previous definition of 'TRANSPARENT'
+         Planet.cpp
+         OpenGL.cpp
+         Model.cpp
          Mesh.cpp
+         InputHandler.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\inputhandler.cpp(15): warning C4800: 'SHORT' : forcing value to bool 'true' or 'false' (performance warning)
+         Composite.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : see previous definition of 'TRANSPARENT'
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Camera.cpp
        Link:
          D:\Program Files\Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.exe" /INCREMENTAL /NOLOGO /LIBPATH:Dependencies\cimg /LIBPATH:Dependencies\glm /LIBPATH:Dependencies\assimp /LIBPATH:Dependencies\freeglut /LIBPATH:Dependencies\glew D:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\glew32.lib D:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\glfw3dll.lib D:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\freeglut.lib assimp.lib opengl32.lib freeglut.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Github\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Composite.obj
@@ -20,9 +53,10 @@
          Debug\Vertex.obj
          Debug\Window.obj
          Debug\ShaderLoader.obj
+         LINK : D:\Github\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.exe not found or not built by the last incremental link; performing full link
          OpenGLResearch.vcxproj -> D:\Github\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.exe
      1>Done Building Project "D:\Github\RechercheTechno\OpenGLResearch\OpenGLResearch\OpenGLResearch.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.90
+Time Elapsed 00:00:26.96
