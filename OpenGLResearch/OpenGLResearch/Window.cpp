@@ -13,7 +13,7 @@ void Window::Initialize()
 	inputhandler->Initialize();
 
 	scene = new Scene();
-	scene->Initialize(openGL);
+	scene->Initialize(openGL, inputhandler);
 }
 
 void Window::Start()
@@ -53,5 +53,5 @@ void Window::initializeWindow()
 
 bool Window::hasExited()
 {
-	return inputhandler->IsKeyDown('e');
+	return inputhandler->IsKeyDown(VK_ESCAPE);
 }

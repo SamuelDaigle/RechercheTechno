@@ -1,4 +1,6 @@
 #include "Dependencies/glm/gtc/matrix_transform.hpp"
+#include "Dependencies\glm\gtx\euler_angles.hpp"
+#include "Dependencies\glm\gtx\transform.hpp"
 
 using namespace glm;
 
@@ -11,8 +13,11 @@ public:
 
 	void Update();
 	void LookAt(vec3 _position);
+	mat4 GetViewMatrix();
 
 	mat4 view;
+	vec3 rotation;
+	vec3 translation;
 
 	vec3 position;
 	vec3 target;

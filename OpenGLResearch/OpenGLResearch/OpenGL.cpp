@@ -31,12 +31,17 @@ GLuint OpenGL::GetProgram()
 
 mat4& OpenGL::GetViewMatrix()
 {
-	return camera->view;
+	return camera->GetViewMatrix();
 }
 
 mat4& OpenGL::GetProjMatrix()
 {
 	return projectionMatrix;
+}
+
+Camera * OpenGL::GetCamera()
+{
+	return camera;
 }
 
 void OpenGL::BeginScene()
