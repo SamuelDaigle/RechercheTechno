@@ -1,9 +1,8 @@
 #include "Composite.h"
 
 
-void Composite::Initialize(OpenGL* _ptrOpenGL)
+void Composite::Initialize(TextureLoader* _textureLoader)
 {
-	ptrOpenGL = _ptrOpenGL;
 }
 
 void Composite::Destroy()
@@ -18,7 +17,7 @@ void Composite::Render()
 {
 	for each (IObject* childObject in childObjects)
 	{
-		ptrOpenGL->SetShaderParameters(childObject->GetWorldMatrix());
+		//ptrOpenGL->SetShaderParameters(childObject->GetWorldMatrix());
 		childObject->Render();
 	}
 }

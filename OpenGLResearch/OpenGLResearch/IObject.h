@@ -1,16 +1,16 @@
+#pragma once
+
 #include "Dependencies\glm\glm.hpp"
 #include "Dependencies\glm\gtx\euler_angles.hpp"
 #include "Dependencies\glm\gtx\transform.hpp"
-#include "OpenGL.h"
-
-#pragma once
+#include "TextureLoader.h"
 
 using namespace glm;
 
 class IObject
 {
 public:
-	virtual void Initialize(OpenGL* _ptrOpenGL) = 0;
+	virtual void Initialize(TextureLoader* _textureLoader) = 0;
 	virtual void Destroy() = 0;
 
 	virtual void Render() = 0;
@@ -29,7 +29,6 @@ protected:
 	vec3 translation;
 	vec3 scaling;
 	vec3 rotation;
-	OpenGL* ptrOpenGL;
 
 private:
 	virtual mat4 GetRotationMatrix()

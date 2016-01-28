@@ -6,7 +6,7 @@ using namespace std;
 class Composite : public IObject
 {
 public:
-	virtual void Initialize(OpenGL* _ptrOpenGL) override;
+	virtual void Initialize(TextureLoader* _textureLoader) override;
 
 	virtual void Destroy() override;
 

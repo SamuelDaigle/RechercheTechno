@@ -5,18 +5,27 @@ void Scene::Initialize(OpenGL* _ptrOpenGL)
 {
 	ptrOpenGL = _ptrOpenGL;
 
+	TextureLoader* textureLoader = new TextureLoader();
+	textureLoader->Initialize();
+
 	IObject* triangle = new Triangle();
-	triangle->Initialize(ptrOpenGL);
+	triangle->Initialize(textureLoader);
 	triangle->Translate(0, -2, 0);
 
 	IObject* triangle2 = new Triangle();
-	triangle2->Initialize(ptrOpenGL);
+	triangle2->Initialize(textureLoader);
 	triangle2->Translate(0, 0, 0);
 
+	IObject* planet = new Planet();
+	planet->Initialize(textureLoader);
+
+
 	rootObject = new Composite();
-	rootObject->Initialize(ptrOpenGL);
+	rootObject->Initialize(textureLoader);
+
 	rootObject->Add(triangle);
 	rootObject->Add(triangle2);
+	rootObject->Add(planet);
 }
 
 void Scene::Destroy()

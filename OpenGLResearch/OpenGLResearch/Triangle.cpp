@@ -1,8 +1,7 @@
 #include "Triangle.h"
 
-void Triangle::Initialize(OpenGL* _ptrOpenGL)
+void Triangle::Initialize(TextureLoader* _textureLoader)
 {
-	ptrOpenGL = _ptrOpenGL;
 
 	scaling.x = 1;
 	scaling.y = 1;
