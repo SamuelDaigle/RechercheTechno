@@ -2,6 +2,7 @@
 #include "Triangle.h"
 #include "OpenGL.h"
 #include "Composite.h"
+#include "Planet.h"
 
 #pragma once
 class Scene
