@@ -1,4 +1,6 @@
 #pragma once
+
+#include <vector>
 using namespace std;
 
 class InputHandler
@@ -9,7 +11,6 @@ public:
 	
 	bool IsKeyDown(unsigned char _key);
 
-private:
 	void OnKeyDown(unsigned char _key);
 	void OnKeyUp(unsigned char _key);
 

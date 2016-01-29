@@ -12,7 +12,18 @@ Window* window;
 
 void Frame(int timeId)
 {
-	window->Start();
+	window->Frame();
+	glutTimerFunc(1, Frame, 1);
+}
+
+void OnKeyPress(unsigned char _key, int _x, int _y)
+{
+	window->OnKeyPress(_key, _x, _y);
+}
+
+void OnKeyRelease(unsigned char _key, int _x, int _y)
+{
+	window->OnKeyRelease(_key, _x, _y);
 }
 
 int main(int argc, char* argv[])
@@ -24,6 +35,8 @@ int main(int argc, char* argv[])
 	window->Initialize();
 
 	glutTimerFunc(1, Frame, 1);
+	glutKeyboardFunc(OnKeyPress);
+	glutKeyboardUpFunc(OnKeyRelease);
 
 	glutMainLoop();
 

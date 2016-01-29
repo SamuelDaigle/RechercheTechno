@@ -16,18 +16,33 @@ void Window::Initialize()
 	scene->Initialize(openGL, inputhandler);
 }
 
-void Window::Start()
-{
-		openGL->BeginScene();
-		scene->Frame();
-		openGL->EndScene();
-}
-
 void Window::Destroy()
 {
 	SAFE_DESTROY(openGL);
 	SAFE_DESTROY(inputhandler);
 	SAFE_DESTROY(scene);
+}
+
+void Window::Frame()
+{
+		openGL->BeginScene();
+		scene->Frame();
+		openGL->EndScene();
+
+		if (hasExited())
+		{
+			glutLeaveMainLoop();
+		}
+}
+
+void Window::OnKeyPress(unsigned char _key, int _x, int _y)
+{
+	inputhandler->OnKeyDown(_key);
+}
+
+void Window::OnKeyRelease(unsigned char _key, int _x, int _y)
+{
+	inputhandler->OnKeyUp(_key);
 }
 
 void Window::initializeWindow()
