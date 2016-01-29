@@ -6,7 +6,13 @@ void OpenGL::Initialize()
 	camera->Initialize();
 
 	glEnable(GL_DEPTH_TEST);
-	projectionMatrix = perspective<float>(radians(45.0f), (float)1000 / (float)800, 0.1f, 100.0f);
+	glDepthMask(GL_ALWAYS);
+	glDepthFunc(GL_LESS);
+	glEnable(GL_STENCIL_TEST);
+
+	glProgram = glCreateProgram();
+
+	projectionMatrix = perspective<float>(radians(45.0f), (float)1000 / (float)800, 0.1f, 500.0f);
 }
 
 void OpenGL::Destroy()
@@ -26,7 +32,7 @@ GLuint OpenGL::GetProgram()
 
 mat4& OpenGL::GetViewMatrix()
 {
-	return camera->view;
+	return camera->GetViewMatrix();
 }
 
 mat4& OpenGL::GetProjMatrix()
@@ -41,6 +47,7 @@ Camera* OpenGL::GetCamera()
 
 void OpenGL::BeginScene()
 {
+	glClearColor(0, 0, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	camera->Update();
