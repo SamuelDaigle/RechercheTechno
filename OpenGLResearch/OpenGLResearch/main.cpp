@@ -10,6 +10,11 @@ using namespace std;
 
 Window* window;
 
+void Frame(int timeId)
+{
+	window->Start();
+}
+
 int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
@@ -18,10 +23,11 @@ int main(int argc, char* argv[])
 
 	window->Initialize();
 
-	window->Start();
+	glutTimerFunc(1, Frame, 1);
+
+	glutMainLoop();
 
 	window->Destroy();
-
 	delete window;
 
 	return 0;

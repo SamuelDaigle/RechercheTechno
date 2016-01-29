@@ -5,6 +5,7 @@
 #include "Planet.h"
 #include "Shader.h"
 #include "InputHandler.h"
+#include "Cube.h"
 
 #pragma once
 class Scene
@@ -27,5 +28,7 @@ private:
 	InputHandler* ptrInputHandler;
 	Composite* rootObject;
 	IShader* basicShader;
+
+	IObject* planet;
 };
 

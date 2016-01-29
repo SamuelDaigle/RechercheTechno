@@ -4,7 +4,7 @@ void Camera::Initialize()
 {
 	rotation = vec3(0, 0, 0);
 	translation = vec3(0, 0, 0);
-	position = vec3(0, 0, -10);
+	position = vec3(3, 0, -10);
 	target = vec3(0, 0, 0);
 	up = vec3(0, 1, 0);
 	LookAt(target);

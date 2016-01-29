@@ -46,8 +46,8 @@ void Model::processNode(aiNode* node, const aiScene* scene, TextureLoader* _text
 
 Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene, TextureLoader* _textureLoader)
 {
-	vector<Vertex> vertices;
-	vector<GLuint> indices;
+	Vertex* vertices = new Vertex[mesh->mNumVertices];
+	GLuint* indices = new GLuint[mesh->mNumVertices];
 	vector<GLuint> diffuseMaps;
 	vector<GLuint> specularMaps;
 
@@ -80,13 +80,13 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene, TextureLoader* _text
 		else
 			vertex.TexCoords = vec2(0.0f, 0.0f);
 
-		vertices.push_back(vertex);
+		vertices[i] = vertex;
 	}
 	for (GLuint i = 0; i < mesh->mNumFaces; i++)
 	{
 		aiFace face = mesh->mFaces[i];
 		for (GLuint j = 0; j < face.mNumIndices; j++)
-			indices.push_back(face.mIndices[j]);
+			indices[i * face.mNumIndices + j] = face.mIndices[j];
 	}
 	// Process materials
 	/*for (int i = 0; i < mesh->mMaterialIndex; i++)

@@ -18,12 +18,9 @@ void Window::Initialize()
 
 void Window::Start()
 {
-	while (!hasExited())
-	{
 		openGL->BeginScene();
 		scene->Frame();
 		openGL->EndScene();
-	}
 }
 
 void Window::Destroy()

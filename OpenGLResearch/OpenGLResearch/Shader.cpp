@@ -13,8 +13,6 @@ Shader::Shader(unsigned int _program)
 	shaderLoader.CompileShader(vertShaderID);
 	shaderLoader.CompileShader(fragShaderID);
 
-	glProgram = glCreateProgram();
-
 	glBindAttribLocation(glProgram, 0, "Position");
 	glBindAttribLocation(glProgram, 1, "Normal");
 	glBindAttribLocation(glProgram, 2, "TexCoords");

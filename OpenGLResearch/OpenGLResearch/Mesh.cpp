@@ -1,6 +1,6 @@
 #include "Mesh.h"
 
-Mesh::Mesh(vector<Vertex> _vertices, vector<GLuint> _indices, vector<GLuint> _diffuseLocations, vector<GLuint> _specularLocations)
+Mesh::Mesh(Vertex* _vertices, GLuint* _indices, vector<GLuint> _diffuseLocations, vector<GLuint> _specularLocations)
 {
 	vertices = _vertices;
 	indices = _indices;
@@ -31,7 +31,7 @@ void Mesh::Draw(IShader& shader)
 	glUniform1f(glGetUniformLocation(shader.glProgram, "material.shininess"), 16.0f);*/
 
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 }
 
@@ -43,10 +43,10 @@ void Mesh::setupMesh()
 
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 36 * sizeof(Vertex), vertices, GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36 * sizeof(GLuint), indices, GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)0);
