@@ -8,9 +8,12 @@ class Window
 {
 public:
 	void Initialize();
-	void Start();
 	void Destroy();
 
+	void Frame();
+	void OnKeyPress(unsigned char _key, int _x, int _y);
+	void OnKeyRelease(unsigned char _key, int _x, int _y);
+	void OnMouseMove(int _x, int _y);
 	void Update();
 
 private:

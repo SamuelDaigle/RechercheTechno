@@ -2,7 +2,6 @@
 
 void Triangle::Initialize(TextureLoader* _textureLoader)
 {
-
 	scaling.x = 1;
 	scaling.y = 1;
 	scaling.z = 1;

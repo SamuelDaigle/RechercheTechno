@@ -24,10 +24,10 @@ public:
 		return GetTranslateMatrix() * GetRotationMatrix() * GetScalingMatrix();
 	}
 
+	vec3 translation;
 protected:
 	int vertexCount, indexCount;
 	unsigned int vertexArrayId, vertexBufferId, indexBufferId;
-	vec3 translation;
 	vec3 scaling;
 	vec3 rotation;
 

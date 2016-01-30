@@ -17,8 +17,8 @@ public:
 	GLuint GetProgram();
 	mat4& GetViewMatrix();
 	mat4& GetProjMatrix();
+	Camera* GetCamera();
 
-	Camera * GetCamera();
 	void BeginScene();
 	void EndScene();
 

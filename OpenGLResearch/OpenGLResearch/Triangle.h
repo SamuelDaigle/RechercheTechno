@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "IObject.h"
 #include "VertexType.h"
 
 #pragma once

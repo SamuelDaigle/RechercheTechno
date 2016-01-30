@@ -10,7 +10,7 @@ ShaderLoader::~ShaderLoader()
 {
 }
 
-void ShaderLoader::LoadShader(char* _filepath, ShaderType _shaderType)
+GLuint ShaderLoader::LoadShader(char* _filepath, ShaderType _shaderType)
 {
 	GLuint shader;
 
@@ -33,37 +33,12 @@ void ShaderLoader::LoadShader(char* _filepath, ShaderType _shaderType)
 
 	glShaderSource(shader, 1, &shaderFile, &shaderLength);
 
-	if (_shaderType == VERTEX)
-	{
-		vertexShader = shader;
-	}
-	else if (_shaderType == FRAGMENTATION)
-	{
-		fragShader = shader;
-	}
-
 	delete[] shaderFile; // dont forget to free allocated memory
+
+	return shader;
 }
 
-void ShaderLoader::CompileLoadedShaders(GLuint& _glProgram)
-{
-
-	compileShader(vertexShader);
-	compileShader(fragShader);
-
-	_glProgram = glCreateProgram();
-
-	glBindAttribLocation(_glProgram, 0, "in_Position");
-	glBindAttribLocation(_glProgram, 1, "in_Color");
-
-	glAttachShader(_glProgram, vertexShader);
-	glAttachShader(_glProgram, fragShader);
-
-	glLinkProgram(_glProgram);
-	glUseProgram(_glProgram);
-}
-
-void ShaderLoader::compileShader(GLuint& _shader)
+void ShaderLoader::CompileShader(GLuint& _shader)
 {
 	GLint compiled;
 
@@ -71,7 +46,7 @@ void ShaderLoader::compileShader(GLuint& _shader)
 	glGetShaderiv(_shader, GL_COMPILE_STATUS, &compiled);
 	if (!compiled)
 	{
-		cout << "Vertex shader not compiled." << endl;
+		cout << "Shader not compiled." << endl;
 		printShaderInfoLog(_shader);
 	}
 }
@@ -111,8 +86,6 @@ void ShaderLoader::printShaderInfoLog(GLuint& shader)
 
 	glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLogLen);
 
-	// should additionally check for OpenGL errors here
-
 	if (infoLogLen > 0)
 	{
 		infoLog = new GLchar[infoLogLen];
@@ -121,6 +94,4 @@ void ShaderLoader::printShaderInfoLog(GLuint& shader)
 		cout << "InfoLog:" << endl << infoLog << endl;
 		delete[] infoLog;
 	}
-
-	// should additionally check for OpenGL errors here
 }

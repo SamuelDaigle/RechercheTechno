@@ -6,12 +6,13 @@ void OpenGL::Initialize()
 	camera->Initialize();
 
 	glEnable(GL_DEPTH_TEST);
-	projectionMatrix = perspective<float>(radians(45.0f), (float)1000 / (float)800, 0.1f, 100.0f);;
+	glDepthMask(GL_ALWAYS);
+	glDepthFunc(GL_LESS);
+	glEnable(GL_STENCIL_TEST);
 
-	ShaderLoader shaderLoader;
-	shaderLoader.LoadShader("color.vert", ShaderLoader::VERTEX);
-	shaderLoader.LoadShader("color.frag", ShaderLoader::FRAGMENTATION);
-	shaderLoader.CompileLoadedShaders(glProgram);
+	glProgram = glCreateProgram();
+
+	projectionMatrix = perspective<float>(radians(45.0f), (float)glutGet(GLUT_SCREEN_WIDTH) / (float)glutGet(GLUT_SCREEN_HEIGHT), 0.1f, 500.0f);
 }
 
 void OpenGL::Destroy()
@@ -39,13 +40,14 @@ mat4& OpenGL::GetProjMatrix()
 	return projectionMatrix;
 }
 
-Camera * OpenGL::GetCamera()
+Camera* OpenGL::GetCamera()
 {
 	return camera;
 }
 
 void OpenGL::BeginScene()
 {
+	glClearColor(0, 0, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	camera->Update();

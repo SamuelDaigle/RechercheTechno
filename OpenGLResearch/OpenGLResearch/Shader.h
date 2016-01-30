@@ -1,6 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
+#include "ShaderLoader.h"
 
 class Shader : public IShader
 {

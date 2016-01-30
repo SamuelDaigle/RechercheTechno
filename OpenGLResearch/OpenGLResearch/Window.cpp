@@ -16,16 +16,6 @@ void Window::Initialize()
 	scene->Initialize(openGL, inputhandler);
 }
 
-void Window::Start()
-{
-	while (!hasExited())
-	{
-		openGL->BeginScene();
-		scene->Frame();
-		openGL->EndScene();
-	}
-}
-
 void Window::Destroy()
 {
 	SAFE_DESTROY(openGL);
@@ -33,12 +23,38 @@ void Window::Destroy()
 	SAFE_DESTROY(scene);
 }
 
+void Window::Frame()
+{
+		openGL->BeginScene();
+		scene->Frame();
+		openGL->EndScene();
+		inputhandler->LateUpdate();
+
+		if (hasExited())
+		{
+			glutLeaveMainLoop();
+		}
+}
+
+void Window::OnKeyPress(unsigned char _key, int _x, int _y)
+{
+	inputhandler->OnKeyDown(_key);
+}
+
+void Window::OnKeyRelease(unsigned char _key, int _x, int _y)
+{
+	inputhandler->OnKeyUp(_key);
+}
+
+void Window::OnMouseMove(int _x, int _y)
+{
+	inputhandler->OnMouseMove(_x, _y);
+}
+
 void Window::initializeWindow()
 {
-	screenWidth = 1000;
-	screenHeight = 800;
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowSize(screenWidth, screenHeight);
+	glutInitWindowSize(glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT));
 	glutCreateWindow("OpenGL research");
 	GLenum err = glewInit();
 	if (GLEW_OK != err)
