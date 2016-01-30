@@ -17,6 +17,7 @@ void Camera::Destroy()
 
 void Camera::Update()
 {
+	target = orientate3(rotation) * vec3(0,0,1);
 	direction = normalize(position - target);
 	right = normalize(cross(up, direction));
 	up = cross(direction, right);
@@ -24,11 +25,11 @@ void Camera::Update()
 
 void Camera::LookAt(vec3 _targetPosition)
 {
-	view = translate(translation) * lookAt(position, _targetPosition, vec3(0.0f, 1.0f, 0.0f));
+	view = lookAt(position, position + _targetPosition, vec3(0.0f, 1.0f, 0.0f)) * translate(translation);
 }
 
 mat4 Camera::GetViewMatrix()
 {
-	target = orientate3(rotation) * vec3(0,0,1);
-	return lookAt(position, position + target, vec3(0.0f, 1.0f, 0.0f)) * translate(translation);
+	LookAt(target);
+	return view;
 }

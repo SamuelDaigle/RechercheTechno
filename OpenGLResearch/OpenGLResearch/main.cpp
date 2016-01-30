@@ -16,14 +16,19 @@ void Frame(int timeId)
 	glutTimerFunc(1, Frame, 1);
 }
 
-void OnKeyPress(unsigned char _key, int _x, int _y)
+void OnKeyPress(unsigned char _key, int _data1, int _data2)
 {
-	window->OnKeyPress(_key, _x, _y);
+	window->OnKeyPress(_key, _data1, _data2);
 }
 
-void OnKeyRelease(unsigned char _key, int _x, int _y)
+void OnKeyRelease(unsigned char _key, int _data1, int _data2)
 {
-	window->OnKeyRelease(_key, _x, _y);
+	window->OnKeyRelease(_key, _data1, _data2);
+}
+
+void OnMouseMove(int _x, int _y)
+{
+	window->OnMouseMove(_x, _y);
 }
 
 int main(int argc, char* argv[])
@@ -31,12 +36,12 @@ int main(int argc, char* argv[])
 	glutInit(&argc, argv);
 
 	window = new Window();
-
 	window->Initialize();
 
 	glutTimerFunc(1, Frame, 1);
 	glutKeyboardFunc(OnKeyPress);
 	glutKeyboardUpFunc(OnKeyRelease);
+	glutPassiveMotionFunc(OnMouseMove);
 
 	glutMainLoop();
 

@@ -12,7 +12,7 @@ void OpenGL::Initialize()
 
 	glProgram = glCreateProgram();
 
-	projectionMatrix = perspective<float>(radians(45.0f), (float)1000 / (float)800, 0.1f, 500.0f);
+	projectionMatrix = perspective<float>(radians(45.0f), (float)glutGet(GLUT_SCREEN_WIDTH) / (float)glutGet(GLUT_SCREEN_HEIGHT), 0.1f, 500.0f);
 }
 
 void OpenGL::Destroy()

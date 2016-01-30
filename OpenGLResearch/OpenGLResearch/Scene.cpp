@@ -5,8 +5,6 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 {
 	ptrOpenGL = _ptrOpenGL;
 	ptrInputHandler = _ptrInputHandler;
-	cursorPosition = new POINT;
-	lastCursorPosition = new POINT;
 
 	TextureLoader* textureLoader = new TextureLoader();
 	textureLoader->Initialize();
@@ -16,7 +14,7 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 
 	IObject* cube = new Cube();
 	cube->Initialize(textureLoader);
-	
+
 	IObject* triangle = new Triangle();
 	triangle->Initialize(textureLoader);
 	triangle->Translate(0, 0, 5);
@@ -48,44 +46,26 @@ void Scene::Frame()
 
 void Scene::input()
 {
-	*lastCursorPosition = *cursorPosition;
-	GetCursorPos(cursorPosition);
-
 	// Rotation
-	if (cursorPosition->x > lastCursorPosition->x)
-	{
-		ptrOpenGL->GetCamera()->rotation.z -= 0.005f;
-	}
-	else if (cursorPosition->x < lastCursorPosition->x)
-	{
-		ptrOpenGL->GetCamera()->rotation.z += 0.005f;
-	}
-
-	if (cursorPosition->y > lastCursorPosition->y)
-	{
-		ptrOpenGL->GetCamera()->rotation.x += 0.005f;
-	}
-	else if (cursorPosition->y < lastCursorPosition->y)
-	{
-		ptrOpenGL->GetCamera()->rotation.x -= 0.005f;
-	}
+	ptrOpenGL->GetCamera()->rotation.z -= ptrInputHandler->GetCursorDelta().x / 1000;
+	ptrOpenGL->GetCamera()->rotation.x += ptrInputHandler->GetCursorDelta().y / 1000;
 
 	// Move with arrow.
-	if (ptrInputHandler->IsKeyDown(VK_LEFT))
+	if (ptrInputHandler->IsKeyDown('a'))
 	{
-		ptrOpenGL->GetCamera()->translation -= ptrOpenGL->GetCamera()->right * vec3(0.01, 0.01, 0.01);
+		ptrOpenGL->GetCamera()->translation += ptrOpenGL->GetCamera()->right * vec3(0.01, 0.01, 0.01);
 	}
-	else if (ptrInputHandler->IsKeyDown(VK_UP))
-	{
-		ptrOpenGL->GetCamera()->translation -= ptrOpenGL->GetCamera()->direction* vec3(0.01, 0.01, 0.01);
-	}
-	else if (ptrInputHandler->IsKeyDown(VK_RIGHT))
-	{
-		ptrOpenGL->GetCamera()->translation += ptrOpenGL->GetCamera()->right* vec3(0.01, 0.01, 0.01);
-}
-	else if (ptrInputHandler->IsKeyDown(VK_DOWN))
+	else if (ptrInputHandler->IsKeyDown('w'))
 	{
 		ptrOpenGL->GetCamera()->translation += ptrOpenGL->GetCamera()->direction* vec3(0.01, 0.01, 0.01);
+	}
+	else if (ptrInputHandler->IsKeyDown('d'))
+	{
+		ptrOpenGL->GetCamera()->translation -= ptrOpenGL->GetCamera()->right* vec3(0.01, 0.01, 0.01);
+	}
+	else if (ptrInputHandler->IsKeyDown('s'))
+	{
+		ptrOpenGL->GetCamera()->translation -= ptrOpenGL->GetCamera()->direction* vec3(0.01, 0.01, 0.01);
 	}
 }
 
