@@ -36,5 +36,5 @@ private:
 	void loadModel(string path, TextureLoader* _textureLoader);
 	void processNode(aiNode* node, const aiScene* scene, TextureLoader* _textureLoader);
 	Mesh processMesh(aiMesh* mesh, const aiScene* scene, TextureLoader* _textureLoader);
-	vector<GLuint> loadMaterialTextures(aiMaterial* mat, aiTextureType type, TextureLoader* _textureLoader);
+	GLuint loadMaterialTextures(aiMaterial* mat, TextureLoader* _textureLoader);
 };

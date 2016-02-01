@@ -77,10 +77,10 @@ void Scene::render()
 	basicShader->SetViewMatrix(ptrOpenGL->GetViewMatrix());
 	basicShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
 
-	/*Camera* camera = ptrOpenGL->GetCamera();
+	Camera* camera = ptrOpenGL->GetCamera();
 	glUniform3f(glGetUniformLocation(basicShader->glProgram, "viewPos"), camera->position.x, camera->position.y, camera->position.z);
 
-	// Point light 1
+	/*// Point light 1
 	glUniform3f(glGetUniformLocation(basicShader->glProgram, "pointLights.position"), 5, 5, 5);
 	glUniform3f(glGetUniformLocation(basicShader->glProgram, "pointLights.ambient"), 0.5f, 0.5f, 0.5f);
 	glUniform3f(glGetUniformLocation(basicShader->glProgram, "pointLights.diffuse"), 1.0f, 1.0f, 1.0f);
