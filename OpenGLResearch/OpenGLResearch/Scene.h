@@ -28,7 +28,5 @@ private:
 	InputHandler* ptrInputHandler;
 	Composite* rootObject;
 	IShader* basicShader;
-
-	IObject* planet;
 };
 
