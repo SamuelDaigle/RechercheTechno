@@ -22,16 +22,17 @@ struct Vertex {
 
 class Mesh {
 public:
-	Vertex* vertices;
-	GLuint* indices;
+	vector<Vertex> vertices;
+	vector<GLuint> indices;
 	vector<GLuint> diffuseLocations;
 	vector<GLuint> specularLocations;
 
-	Mesh(Vertex* _vertices, GLuint* _indices, vector<GLuint> _diffuseLocations, vector<GLuint> _specularLocations);
+	Mesh(vector<Vertex> _vertices, vector<GLuint> _indices, vector<GLuint> _diffuseLocations, vector<GLuint> _specularLocations);
 	void Draw(IShader& shader);
 
 private:
 	GLuint VAO, VBO, EBO;
+	int NbIndices;
 
 	void setupMesh();
 };
