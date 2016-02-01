@@ -1,37 +1,26 @@
 #include "Mesh.h"
 
-Mesh::Mesh(Vertex* _vertices, GLuint* _indices, vector<GLuint> _diffuseLocations, vector<GLuint> _specularLocations)
+Mesh::Mesh(vector<Vertex> _vertices, vector<GLuint> _indices, GLuint _texture)
 {
 	vertices = _vertices;
 	indices = _indices;
-	diffuseLocations = _diffuseLocations;
-	specularLocations = _specularLocations;
+	texture = _texture;
 
 	setupMesh();
 }
 
 void Mesh::Draw(IShader& shader)
 {
-	/*GLuint diffuseNr = 1;
-	GLuint specularNr = 1;
-	for (GLuint i = 0; i < diffuseLocations.size(); i++)
-	{
-		glActiveTexture(GL_TEXTURE0 + i);
-		glUniform1i(glGetUniformLocation(shader.glProgram, "material.diffuse1"), i);
-		glBindTexture(GL_TEXTURE_2D, diffuseLocations[i]);
-	}
+	// Texture
+	glUniform1i(glGetUniformLocation(shader.glProgram, "textureSample"), 0);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture);
 
-	for (GLuint i = diffuseLocations.size(); i < diffuseLocations.size() + specularLocations.size(); i++)
-	{
-		glActiveTexture(GL_TEXTURE0 + i);
-		glUniform1i(glGetUniformLocation(shader.glProgram, "material.specular1"),i);
-		glBindTexture(GL_TEXTURE_2D, specularLocations[i - diffuseLocations.size()]);
-	}
-
-	glUniform1f(glGetUniformLocation(shader.glProgram, "material.shininess"), 16.0f);*/
+	// Color
+	glUniform4f(glGetUniformLocation(shader.glProgram, "Color"), 0.0f, 1.0f, 0.0f, 1.0f);
 
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 }
 
@@ -43,10 +32,10 @@ void Mesh::setupMesh()
 
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, 36 * sizeof(Vertex), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36 * sizeof(GLuint), indices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)0);

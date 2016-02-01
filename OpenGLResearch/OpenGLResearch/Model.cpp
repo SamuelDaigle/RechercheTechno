@@ -46,10 +46,9 @@ void Model::processNode(aiNode* node, const aiScene* scene, TextureLoader* _text
 
 Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene, TextureLoader* _textureLoader)
 {
-	Vertex* vertices = new Vertex[mesh->mNumVertices];
-	GLuint* indices = new GLuint[mesh->mNumVertices];
-	vector<GLuint> diffuseMaps;
-	vector<GLuint> specularMaps;
+	vector<Vertex> vertices;
+	vector<GLuint> indices;
+	GLuint texture;
 
 	// Walk through each of the mesh's vertices
 	for (GLuint i = 0; i < mesh->mNumVertices; i++)
@@ -80,43 +79,36 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene, TextureLoader* _text
 		else
 			vertex.TexCoords = vec2(0.0f, 0.0f);
 
-		vertices[i] = vertex;
+		vertices.push_back(vertex);
 	}
 	for (GLuint i = 0; i < mesh->mNumFaces; i++)
 	{
 		aiFace face = mesh->mFaces[i];
 		for (GLuint j = 0; j < face.mNumIndices; j++)
-			indices[i * face.mNumIndices + j] = face.mIndices[j];
+			indices.push_back(face.mIndices[j]);
 	}
 	// Process materials
-	/*for (int i = 0; i < mesh->mMaterialIndex; i++)
+	if (mesh->mMaterialIndex >= 0)
 	{
-		aiMaterial* material = scene->mMaterials[i];
+		aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
-		vector<GLuint> diffuses = loadMaterialTextures(material, aiTextureType_DIFFUSE, _textureLoader);
-		diffuseMaps.insert(diffuseMaps.end(), diffuses.begin(), diffuses.end());
-		vector<GLuint> speculars = loadMaterialTextures(material, aiTextureType_SPECULAR, _textureLoader);
-		diffuseMaps.insert(diffuseMaps.end(), speculars.begin(), speculars.end());
-	}*/
-
-	return Mesh(vertices, indices, diffuseMaps, specularMaps);
-}
-
-vector<GLuint> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, TextureLoader* _textureLoader)
-{
-	vector<GLuint> textures;
-
-	for (GLuint i = 0; i < mat->GetTextureCount(type); i++)
-	{
-		aiString str;
-		mat->GetTexture(type, i, &str);
-
-		aiString dirStr(directory);
-		dirStr.Append("/");
-		dirStr.Append(str.C_Str());
-		
-		textures.push_back(_textureLoader->GetTexture(dirStr.C_Str()));
+		// 1. Diffuse maps
+		texture = loadMaterialTextures(material, _textureLoader);
 	}
 
-	return textures;
+	return Mesh(vertices, indices, texture);
+}
+
+GLuint Model::loadMaterialTextures(aiMaterial* mat, TextureLoader* _textureLoader)
+{
+	aiString str;
+	mat->GetTexture(aiTextureType_UNKNOWN, 0, &str);
+
+	str = "planet_texture_by_thunorrad.bmp";
+
+	aiString dirStr(directory);
+	dirStr.Append("/");
+	dirStr.Append(str.C_Str());
+
+	return _textureLoader->GetTexture(dirStr.C_Str());
 }
