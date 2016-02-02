@@ -1,8 +1,8 @@
-﻿Build started 2016-02-01 12:58:40 PM.
+﻿Build started 2016-02-02 2:25:15 PM.
      1>Project "D:\Github\RechercheTechno\OpenGLResearch\OpenGLResearch\OpenGLResearch.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files\Visual Studio 2013\VC\bin\CL.exe /c /ID:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Scene.cpp
-         Scene.cpp
+         D:\Program Files\Visual Studio 2013\VC\bin\CL.exe /c /ID:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Light.cpp
+         Light.cpp
      1>d:\github\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : macro redefinition
                  c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : see previous definition of 'TRANSPARENT'
        Link:
@@ -10,6 +10,7 @@
          Debug\Composite.obj
          Debug\Cube.obj
          Debug\InputHandler.obj
+         Debug\Light.obj
          Debug\main.obj
          Debug\Mesh.obj
          Debug\Model.obj
@@ -28,4 +29,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.01
+Time Elapsed 00:00:04.27

@@ -11,10 +11,11 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 
 	IObject* planet = new Planet();
 	planet->Initialize(textureLoader);
+	planet->Translate(0, 0, 5);
 
 	IObject* planet2 = new Planet();
 	planet2->Initialize(textureLoader);
-	planet2->Translate(1, 0, 0);
+	planet2->Translate(10, 0, 0);
 
 	rootObject = new Composite();
 	rootObject->Initialize(textureLoader);
@@ -22,10 +23,14 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	rootObject->Add(planet2);
 
 	basicShader = new Shader(ptrOpenGL->GetProgram());
+
+	light = new Light();
+	light->Initialize();
 }
 
 void Scene::Destroy()
 {
+	SAFE_DESTROY(light);
 	SAFE_DESTROY(rootObject); // destroys its childs.
 	delete cursorPosition;
 	delete lastCursorPosition;
@@ -70,16 +75,10 @@ void Scene::render()
 	basicShader->SetViewMatrix(ptrOpenGL->GetViewMatrix());
 	basicShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
 
-	/*// Point light 1
-	glUniform3f(glGetUniformLocation(basicShader->glProgram, "pointLights.position"), 5, 5, 5);
-	glUniform3f(glGetUniformLocation(basicShader->glProgram, "pointLights.ambient"), 0.5f, 0.5f, 0.5f);
-	glUniform3f(glGetUniformLocation(basicShader->glProgram, "pointLights.diffuse"), 1.0f, 1.0f, 1.0f);
-	glUniform3f(glGetUniformLocation(basicShader->glProgram, "pointLights.specular"), 1.0f, 1.0f, 1.0f);
-	glUniform1f(glGetUniformLocation(basicShader->glProgram, "pointLights.constant"), 1.0f);
-	glUniform1f(glGetUniformLocation(basicShader->glProgram, "pointLights.linear"), 0.009);
-	glUniform1f(glGetUniformLocation(basicShader->glProgram, "pointLights.quadratic"), 0.0032);*/
-
+	glUniform3f(glGetUniformLocation(basicShader->glProgram, "viewPos"), ptrOpenGL->GetCamera()->position.x, ptrOpenGL->GetCamera()->position.y, ptrOpenGL->GetCamera()->position.z);
+	light->Apply(basicShader);
 	rootObject->Render(*basicShader);
+
 }
 
 void Scene::update()

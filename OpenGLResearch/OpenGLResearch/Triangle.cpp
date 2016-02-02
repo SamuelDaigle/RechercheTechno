@@ -43,26 +43,6 @@ void Triangle::Render(IShader& _shader)
 	glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
 }
 
-void Triangle::Translate(float _x, float _y, float _z)
-{
-	translation.x += _x;
-	translation.y += _y;
-	translation.z += _z;
-}
-
-void Triangle::Rotate(float _angleX, float _angleY, float _angleZ)
-{
-	rotation.x += _angleX;
-	rotation.y += _angleZ;
-	rotation.z += _angleY;
-}
-
-void Triangle::Scale(float _scaleX, float _scaleY, float _scaleZ)
-{
-	scaling.x += _scaleX;
-	scaling.y += _scaleY;
-	scaling.z += _scaleZ;
-}
 
 void Triangle::initializeBuffers()
 {
