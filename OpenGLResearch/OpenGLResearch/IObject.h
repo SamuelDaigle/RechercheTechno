@@ -15,9 +15,27 @@ public:
 	virtual void Destroy() = 0;
 
 	virtual void Render(IShader& _shader) = 0;
-	virtual void Translate(float _x, float _y, float _z) = 0;
-	virtual void Rotate(float _angleX, float _angleY, float _angleZ) = 0;
-	virtual void Scale(float _scaleX, float _scaleY, float _scaleZ) = 0;
+
+	virtual void Translate(float _x, float _y, float _z)
+	{
+		translation.x += _x;
+		translation.y += _y;
+		translation.z += _z;
+	}
+
+	virtual void Rotate(float _angleX, float _angleY, float _angleZ)
+	{
+		rotation.x += _angleX;
+		rotation.y += _angleZ;
+		rotation.z += _angleY;
+	}
+
+	virtual void Scale(float _scaleX, float _scaleY, float _scaleZ)
+	{
+		scaling.x += _scaleX;
+		scaling.y += _scaleY;
+		scaling.z += _scaleZ;
+	}
 
 	virtual mat4 GetWorldMatrix()
 	{

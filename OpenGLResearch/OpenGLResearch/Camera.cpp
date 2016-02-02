@@ -19,7 +19,6 @@ void Camera::Update()
 	target = orientate3(rotation) * vec3(0, 0, 1);
 	forward = normalize(target);
 	right = normalize(cross(up, forward));
-	up = cross(forward, right);
 
 	LookAt(forward);
 }
