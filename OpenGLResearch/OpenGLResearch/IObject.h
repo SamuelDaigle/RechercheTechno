@@ -39,7 +39,7 @@ public:
 
 	virtual mat4 GetWorldMatrix()
 	{
-		return GetTranslateMatrix() * GetRotationMatrix() * GetScalingMatrix();
+		return GetRotationMatrix() * GetScalingMatrix() * GetTranslateMatrix();
 	}
 
 	vec3 translation;

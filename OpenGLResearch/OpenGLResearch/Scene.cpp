@@ -9,18 +9,23 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	TextureLoader* textureLoader = new TextureLoader();
 	textureLoader->Initialize();
 
-	IObject* planet = new Planet();
+	planet = new Planet();
 	planet->Initialize(textureLoader);
-	planet->Translate(0, 0, 5);
+	planet->Translate(0, 1, 5);
 
 	IObject* planet2 = new Planet();
 	planet2->Initialize(textureLoader);
-	planet2->Translate(10, 0, 0);
+	planet2->Translate(10, -2, 0);
 
+	Composite* planetComposite = new Composite();
+	planetComposite->Initialize(textureLoader);
+	planetComposite->Translate(13, 2, 5);
+	
 	rootObject = new Composite();
 	rootObject->Initialize(textureLoader);
 	rootObject->Add(planet);
-	rootObject->Add(planet2);
+	planetComposite->Add(planet2);
+	rootObject->Add(planetComposite);
 
 	basicShader = new Shader(ptrOpenGL->GetProgram());
 
@@ -32,8 +37,6 @@ void Scene::Destroy()
 {
 	SAFE_DESTROY(light);
 	SAFE_DESTROY(rootObject); // destroys its childs.
-	delete cursorPosition;
-	delete lastCursorPosition;
 	// Do not delete ptrOpenGL as the window contains it.
 }
 
@@ -83,5 +86,6 @@ void Scene::render()
 
 void Scene::update()
 {
-
+	rootObject->Rotate(0, 0.0005f, 0);
+	planet->Rotate(0, 0.001f, 0);
 }

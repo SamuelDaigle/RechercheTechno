@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "Planet.h"
 
 using namespace std;
 
@@ -22,5 +23,6 @@ public:
 
 private:
 	vector<IObject*> childObjects;
+	IObject * planet;
 };
 

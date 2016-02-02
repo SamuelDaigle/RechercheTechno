@@ -22,12 +22,10 @@ private:
 	void update();
 	void render();
 
-	POINT * cursorPosition;
-	POINT * lastCursorPosition;
-
 	OpenGL* ptrOpenGL;
 	InputHandler* ptrInputHandler;
 	Composite* rootObject;
+	Planet* planet;
 	IShader* basicShader;
 	Light* light;
 };
