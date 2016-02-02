@@ -17,11 +17,10 @@ public:
 
 	mat4 view;
 	vec3 rotation;
-	vec3 translation;
 
 	vec3 position;
 	vec3 target;
-	vec3 direction;
+	vec3 forward;
 	vec3 up;
 	vec3 right;
 };
