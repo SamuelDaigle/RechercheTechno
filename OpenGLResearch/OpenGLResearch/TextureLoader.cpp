@@ -57,3 +57,9 @@ GLuint TextureLoader::LoadTextureFromFile(const char* path)
 
 	return textureID;
 }
+
+CImg<unsigned char> TextureLoader::GetUnloadedTexture(const char* _path)
+{
+	CImg<unsigned char> image(_path);
+	return image;
+}

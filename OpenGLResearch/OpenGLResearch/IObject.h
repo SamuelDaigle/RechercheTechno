@@ -44,9 +44,9 @@ public:
 
 	virtual void Scale(float _scaleX, float _scaleY, float _scaleZ)
 	{
-		scaling.x += _scaleX;
-		scaling.y += _scaleY;
-		scaling.z += _scaleZ;
+		scaling.x = _scaleX;
+		scaling.y = _scaleY;
+		scaling.z = _scaleZ;
 	}
 
 	virtual mat4 GetWorldMatrix()
@@ -54,7 +54,7 @@ public:
 		return GetRotationMatrix() * GetScalingMatrix() * GetTranslateMatrix();
 	}
 
-	virtual void InitializeRotationSpeed(float _speed)
+	virtual void SetRotationSpeed(float _speed)
 	{
 		speedRotation = _speed;
 	}

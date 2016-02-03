@@ -10,8 +10,6 @@ void OpenGL::Initialize()
 	glDepthFunc(GL_LESS);
 	glEnable(GL_STENCIL_TEST);
 
-	glProgram = glCreateProgram();
-
 	projectionMatrix = perspective<float>(radians(45.0f), (float)glutGet(GLUT_SCREEN_WIDTH) / (float)glutGet(GLUT_SCREEN_HEIGHT), 0.1f, 500.0f);
 }
 
@@ -23,11 +21,6 @@ void OpenGL::Destroy()
 		delete camera;
 		camera = NULL;
 	}
-}
-
-GLuint OpenGL::GetProgram()
-{
-	return glProgram;
 }
 
 mat4& OpenGL::GetViewMatrix()

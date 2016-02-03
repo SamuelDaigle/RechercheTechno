@@ -11,20 +11,22 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 
 	planet = new Planet();
 	planet->Initialize(textureLoader);
-	planet->Translate(0, 1, 5);
-	planet->InitializeRotationSpeed(0.005f);
+	planet->Translate(0, 0, 15);
+	planet->SetRotationSpeed(0.0005f);
 	planet->SetColor(1,0.4f,1);
 
 	Composite* planetComposite = new Composite();
 	planetComposite->Initialize(textureLoader);
-	planetComposite->Translate(13, 2, 5);
+	planetComposite->SetRotationSpeed(0.000005f);
+	planetComposite->Translate(10, 0, 0);
 	planetComposite->SetColor(0, 1, 0.2f);
 
 	IObject* planet2 = new Planet();
 	planet2->Initialize(textureLoader);
-	planet2->SetColor(0.8f, 0, 0);
-	planet2->InitializeRotationSpeed(0.005f);
-	planet2->Translate(10, -2, 0);
+	planet2->Scale(0.3f, 0.3f, 0.3f);
+	planet2->SetColor(1.0f, 1.0f, 1.0f);
+	planet2->SetRotationSpeed(0.001f);
+	planet2->Translate(6, 0, 0);
 	
 	rootObject = new Composite();
 	rootObject->Initialize(textureLoader);
@@ -32,7 +34,19 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	planetComposite->Add(planet2);
 	rootObject->Add(planetComposite);
 
-	basicShader = new Shader(ptrOpenGL->GetProgram());
+	basicShader = new Shader();
+	skyboxShader = new SkyboxShader();
+
+
+	vector<const char*> filePaths;
+	filePaths.push_back("../Content/skybox/right.bmp");
+	filePaths.push_back("../Content/skybox/left.bmp");
+	filePaths.push_back("../Content/skybox/top.bmp");
+	filePaths.push_back("../Content/skybox/bottom.bmp");
+	filePaths.push_back("../Content/skybox/back.bmp");
+	filePaths.push_back("../Content/skybox/front.bmp");
+	skybox = new Skybox();
+	skybox->Initialize(filePaths, textureLoader);
 
 	light = new Light();
 	light->Initialize();
@@ -79,6 +93,14 @@ void Scene::input()
 
 void Scene::render()
 {
+
+	glDepthMask(GL_FALSE);
+	skyboxShader->Use();
+	skyboxShader->SetViewMatrix(lookAt(vec3(0, 0, 0), ptrOpenGL->GetCamera()->target, vec3(0.0f, 1.0f, 0.0f)));
+	skyboxShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
+	skybox->Render(*skyboxShader);
+	glDepthMask(GL_TRUE);
+	
 	basicShader->Use();
 	basicShader->SetViewMatrix(ptrOpenGL->GetViewMatrix());
 	basicShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
@@ -86,7 +108,6 @@ void Scene::render()
 	glUniform3f(glGetUniformLocation(basicShader->glProgram, "viewPos"), ptrOpenGL->GetCamera()->position.x, ptrOpenGL->GetCamera()->position.y, ptrOpenGL->GetCamera()->position.z);
 	light->Apply(basicShader);
 	rootObject->Render(*basicShader);
-
 }
 
 void Scene::update()
