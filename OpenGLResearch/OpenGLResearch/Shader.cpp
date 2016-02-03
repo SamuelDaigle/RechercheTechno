@@ -1,9 +1,9 @@
 #include "Shader.h"
 
 
-Shader::Shader(unsigned int _program)
+Shader::Shader()
 {
-	glProgram = _program;
+	glProgram = glCreateProgram();
 
 	ShaderLoader shaderLoader;
 

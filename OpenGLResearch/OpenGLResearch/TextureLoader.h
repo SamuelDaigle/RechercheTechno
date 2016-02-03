@@ -15,6 +15,8 @@ public:
 	GLuint GetTexture(const char* _texturePath);
 	GLuint LoadTextureFromFile(const char* path);
 
+	CImg<unsigned char> GetUnloadedTexture(const char* _path);
+
 private:
 	TextureBank* textureBank;
 };

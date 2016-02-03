@@ -3,7 +3,9 @@
 #include "OpenGL.h"
 #include "Composite.h"
 #include "Planet.h"
+#include "Skybox.h"
 #include "Shader.h"
+#include "SkyboxShader.h"
 #include "InputHandler.h"
 #include "Cube.h"
 #include "Light.h"
@@ -27,6 +29,8 @@ private:
 	Composite* rootObject;
 	Planet* planet;
 	IShader* basicShader;
+	IShader* skyboxShader;
+	Skybox* skybox;
 	Light* light;
 };
 

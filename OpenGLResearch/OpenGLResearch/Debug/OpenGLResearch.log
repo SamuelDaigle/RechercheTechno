@@ -1,4 +1,4 @@
-﻿Build started 2016-02-03 12:06:15 PM.
+﻿Build started 2016-02-03 4:53:48 PM.
      1>Project "D:\Github\RechercheTechno\OpenGLResearch\OpenGLResearch\OpenGLResearch.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Program Files\Visual Studio 2013\VC\bin\CL.exe /c /ID:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Scene.cpp
@@ -19,6 +19,7 @@
          Debug\Scene.obj
          Debug\Shader.obj
          Debug\Skybox.obj
+         Debug\SkyboxShader.obj
          Debug\TextureBank.obj
          Debug\TextureLoader.obj
          Debug\Triangle.obj
@@ -30,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.11
+Time Elapsed 00:00:03.92

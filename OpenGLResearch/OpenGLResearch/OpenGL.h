@@ -14,7 +14,6 @@ public:
 	void Initialize();
 	void Destroy();
 
-	GLuint GetProgram();
 	mat4& GetViewMatrix();
 	mat4& GetProjMatrix();
 	Camera* GetCamera();
@@ -27,8 +26,6 @@ private:
 
 	unsigned int* vertexArrayObjID;
 	unsigned int* vertexBufferObjID[2];
-
-	GLuint glProgram;
 
 	Camera* camera;
 	mat4 projectionMatrix;

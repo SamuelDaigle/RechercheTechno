@@ -6,7 +6,7 @@
 class Shader : public IShader
 {
 public:
-	Shader(unsigned int _program);
+	Shader();
 	~Shader();
 
 	void SetWorldMatrix(mat4 _worldMatrix) override;
@@ -15,7 +15,5 @@ public:
 
 private:
 	GLfloat* MatrixToFloatArray(mat4 _matrix);
-
-
 };
 
