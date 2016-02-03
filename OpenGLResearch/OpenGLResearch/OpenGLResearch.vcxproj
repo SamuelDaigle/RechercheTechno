@@ -86,6 +86,7 @@
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="TextureBank.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="Triangle.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="Planet.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Skybox.h" />
     <ClInclude Include="TextureBank.h" />
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="VertexType.h" />
