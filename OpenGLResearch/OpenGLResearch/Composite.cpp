@@ -16,13 +16,27 @@ void Composite::Destroy()
 	}
 }
 
+void Composite::Update()
+{
+	planet->Update();
+	for each (IObject* childObject in childObjects)
+	{
+		childObject->Update();
+	}
+}
+
+void Composite::SetColor(float _r, float _g, float _b)
+{
+	planet->SetColor(_r, _g, _b);
+}
+
 void Composite::Render(IShader& _shader)
 {
 	_shader.SetWorldMatrix(planet->GetWorldMatrix());
 	planet->Render(_shader);
 	for each (IObject* childObject in childObjects)
 	{
-		_shader.SetWorldMatrix(childObject->GetWorldMatrix());
+		_shader.SetWorldMatrix(planet->GetWorldMatrix() * childObject->GetWorldMatrix());
 		childObject->Render(_shader);
 	}
 }

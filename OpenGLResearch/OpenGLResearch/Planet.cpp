@@ -14,5 +14,7 @@ void Planet::Destroy()
 
 void Planet::Render(IShader& _shader)
 {
+	// Color
+	glUniform4f(glGetUniformLocation(_shader.glProgram, "Color"), r, g, b, 1.0f);
 	model->Draw(_shader);
 }

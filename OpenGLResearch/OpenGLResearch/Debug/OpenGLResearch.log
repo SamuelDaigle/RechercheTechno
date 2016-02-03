@@ -1,10 +1,10 @@
-﻿La génération a démarré 2016-02-02 3:28:38 PM.
+﻿La génération a démarré 2016-02-03 11:19:13 AM.
      1>Projet "C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\OpenGLResearch\OpenGLResearch.vcxproj" sur le nœud 2 (Build cible(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt OpenGL.cpp
-         OpenGL.cpp
-     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\opengl.cpp(9): warning C4305: 'argument' : troncation de 'int' à 'GLboolean'
-     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\opengl.cpp(9): warning C4309: 'argument' : troncation de valeur de constante
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Scene.cpp
+         Scene.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.exe" /INCREMENTAL /NOLOGO /LIBPATH:Dependencies\cimg /LIBPATH:Dependencies\glm /LIBPATH:Dependencies\assimp /LIBPATH:Dependencies\freeglut /LIBPATH:Dependencies\glew C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\glew32.lib C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\glfw3dll.lib C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\freeglut.lib assimp.lib opengl32.lib freeglut.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Composite.obj
@@ -29,4 +29,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:03.12
+Temps écoulé 00:00:05.67

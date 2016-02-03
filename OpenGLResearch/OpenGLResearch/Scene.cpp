@@ -12,14 +12,19 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	planet = new Planet();
 	planet->Initialize(textureLoader);
 	planet->Translate(0, 1, 5);
-
-	IObject* planet2 = new Planet();
-	planet2->Initialize(textureLoader);
-	planet2->Translate(10, -2, 0);
+	planet->InitializeRotationSpeed(0.005f);
+	planet->SetColor(1,0.4f,1);
 
 	Composite* planetComposite = new Composite();
 	planetComposite->Initialize(textureLoader);
 	planetComposite->Translate(13, 2, 5);
+	planetComposite->SetColor(0, 1, 0.2f);
+
+	IObject* planet2 = new Planet();
+	planet2->Initialize(textureLoader);
+	planet2->SetColor(0.8f, 0, 0);
+	planet2->InitializeRotationSpeed(0.005f);
+	planet2->Translate(10, -2, 0);
 	
 	rootObject = new Composite();
 	rootObject->Initialize(textureLoader);
@@ -86,6 +91,5 @@ void Scene::render()
 
 void Scene::update()
 {
-	rootObject->Rotate(0, 0.0005f, 0);
-	planet->Rotate(0, 0.001f, 0);
+	rootObject->Update();
 }
