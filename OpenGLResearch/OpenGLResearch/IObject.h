@@ -15,6 +15,18 @@ public:
 	virtual void Destroy() = 0;
 
 	virtual void Render(IShader& _shader) = 0;
+	
+	virtual void Update()
+	{
+		rotation.z += speedRotation;
+	}
+
+	virtual void SetColor(float _r, float _g, float _b)
+	{
+		r = _r;
+		g = _g;
+		b = _b;
+	}
 
 	virtual void Translate(float _x, float _y, float _z)
 	{
@@ -42,12 +54,21 @@ public:
 		return GetRotationMatrix() * GetScalingMatrix() * GetTranslateMatrix();
 	}
 
+	virtual void InitializeRotationSpeed(float _speed)
+	{
+		speedRotation = _speed;
+	}
+
 	vec3 translation;
 protected:
 	int vertexCount, indexCount;
 	unsigned int vertexArrayId, vertexBufferId, indexBufferId;
 	vec3 scaling;
 	vec3 rotation;
+	float r = 1;
+	float g = 1;
+	float b = 0.2f;
+	float speedRotation = 0.001f;
 
 private:
 	virtual mat4 GetRotationMatrix()

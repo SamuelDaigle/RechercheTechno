@@ -16,8 +16,8 @@ void Mesh::Draw(IShader& shader)
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
 
-	// Color
-	glUniform4f(glGetUniformLocation(shader.glProgram, "Color"), 0.0f, 1.0f, 0.0f, 1.0f);
+	//// Color
+	//glUniform4f(glGetUniformLocation(shader.glProgram, "Color"), 0.0f, 1.0f, 0.0f, 1.0f);
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
