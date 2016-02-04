@@ -9,6 +9,7 @@
 #include "InputHandler.h"
 #include "Cube.h"
 #include "Light.h"
+#include "Text.h"
 
 #pragma once
 class Scene
@@ -24,6 +25,7 @@ private:
 	void update();
 	void render();
 
+	Text* text;
 	OpenGL* ptrOpenGL;
 	InputHandler* ptrInputHandler;
 	Composite* rootObject;

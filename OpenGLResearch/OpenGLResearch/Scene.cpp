@@ -6,6 +6,9 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	ptrOpenGL = _ptrOpenGL;
 	ptrInputHandler = _ptrInputHandler;
 
+	/*text = new Text();
+	text->NewText("Allo", 0,0,1,0,0);*/
+
 	TextureLoader* textureLoader = new TextureLoader();
 	textureLoader->Initialize();
 
@@ -108,6 +111,7 @@ void Scene::render()
 	glUniform3f(glGetUniformLocation(basicShader->glProgram, "viewPos"), ptrOpenGL->GetCamera()->position.x, ptrOpenGL->GetCamera()->position.y, ptrOpenGL->GetCamera()->position.z);
 	light->Apply(basicShader);
 	rootObject->Render(*basicShader);
+	text->DrawTexts();
 }
 
 void Scene::update()
