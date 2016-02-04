@@ -40,12 +40,11 @@ GLuint TextureLoader::LoadTextureFromFile(const char* path)
 	glGenTextures(1, &textureID);
 
 	// Load texture file.
-	CImg<unsigned char> image;
-	image.load_bmp(path);
+	unsigned char* image = SOIL_load_image(path, &width, &height, 0, SOIL_LOAD_RGB);
 
 	// Assign texture to ID
 	glBindTexture(GL_TEXTURE_2D, textureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.width(), image.height(), 0, GL_RGB, GL_UNSIGNED_BYTE, image.data());
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
 
 	// Parameters
@@ -56,10 +55,4 @@ GLuint TextureLoader::LoadTextureFromFile(const char* path)
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	return textureID;
-}
-
-CImg<unsigned char> TextureLoader::GetUnloadedTexture(const char* _path)
-{
-	CImg<unsigned char> image(_path);
-	return image;
 }
