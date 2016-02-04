@@ -1,9 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Dependencies/cimg/CImg.h"
-
-using namespace cimg_library;
+#include "Dependencies/soil/SOIL.h"
 
 class Skybox
 {

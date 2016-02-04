@@ -2,22 +2,23 @@
 
 void Skybox::Initialize(vector<const GLchar*> _filePaths, TextureLoader* _textureLoader)
 {
+	int width, height;
+	unsigned char* image;
 
 	glGenTextures(1, &cubemapID);
-	glActiveTexture(GL_TEXTURE0);
-	CImg<unsigned char> image;
 
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapID);
+	for (GLuint i = 0; i < _filePaths.size(); i++)
+	{
+		image = SOIL_load_image(_filePaths[i], &width, &height, 0, SOIL_LOAD_RGB);
+		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+		SOIL_free_image_data(image);
+	}
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-	for (GLuint i = 0; i < _filePaths.size(); i++)
-	{
-		image = _textureLoader->GetUnloadedTexture(_filePaths[i]);
-		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, image.width(), image.height(), 0, GL_RGB, GL_UNSIGNED_BYTE, image.data());
-	}
 	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 
 	const GLfloat VERTEX_DISTANCE = 1;
