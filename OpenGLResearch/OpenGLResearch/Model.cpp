@@ -102,9 +102,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene, TextureLoader* _text
 GLuint Model::loadMaterialTextures(aiMaterial* mat, TextureLoader* _textureLoader)
 {
 	aiString str;
-	mat->GetTexture(aiTextureType_UNKNOWN, 0, &str);
-
-	str = "planet_texture_by_thunorrad.bmp";
+	mat->GetTexture(aiTextureType_DIFFUSE, 0, &str);
 
 	aiString dirStr(directory);
 	dirStr.Append("/");

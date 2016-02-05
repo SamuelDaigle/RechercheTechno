@@ -10,6 +10,9 @@
 #include "Cube.h"
 #include "Light.h"
 #include "Text.h"
+#include "Sun.h"
+
+#include "Dependencies/glm/common.hpp"
 
 #pragma once
 class Scene
@@ -25,7 +28,6 @@ private:
 	void update();
 	void render();
 
-	Text* text;
 	OpenGL* ptrOpenGL;
 	InputHandler* ptrInputHandler;
 	Composite* rootObject;

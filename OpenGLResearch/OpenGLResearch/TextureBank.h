@@ -17,6 +17,6 @@ public:
 	GLuint GetTexture(const char* _path);
 
 private:
-	map<const char*, GLuint> textureLocations;
+	map<string, GLuint> textureLocations;
 };
 

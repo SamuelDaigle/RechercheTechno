@@ -7,6 +7,11 @@ void Composite::Initialize(TextureLoader* _textureLoader)
 	planet->Initialize(_textureLoader);
 }
 
+void Composite::Initialize(IObject* _object)
+{
+	planet = _object;
+}
+
 void Composite::Destroy()
 {
 	SAFE_DESTROY(planet);
@@ -62,10 +67,6 @@ void Composite::Rotate(float _angleX, float _angleY, float _angleZ)
 void Composite::Scale(float _scaleX, float _scaleY, float _scaleZ)
 {
 	planet->Scale(_scaleX, _scaleY, _scaleZ);
-	for each (IObject* childObject in childObjects)
-	{
-		childObject->Scale(_scaleX, _scaleY, _scaleZ);
-	}
 }
 
 void Composite::Add(IObject* _object)

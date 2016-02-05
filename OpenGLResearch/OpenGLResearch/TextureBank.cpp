@@ -17,7 +17,8 @@ bool TextureBank::HasTexture(const char* _path)
 
 void TextureBank::AddTexture(const char* _path, GLuint _texture)
 {
-	textureLocations[_path] = _texture;
+	string path = _path;
+	textureLocations[path] = _texture;
 }
 
 GLuint TextureBank::GetTexture(const char* _path)

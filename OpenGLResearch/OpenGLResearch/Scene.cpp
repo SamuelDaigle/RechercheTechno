@@ -6,15 +6,12 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	ptrOpenGL = _ptrOpenGL;
 	ptrInputHandler = _ptrInputHandler;
 
-	/*text = new Text();
-	text->NewText("Allo", 0,0,1,0,0);*/
-
 	TextureLoader* textureLoader = new TextureLoader();
 	textureLoader->Initialize();
 
 	planet = new Planet();
 	planet->Initialize(textureLoader);
-	planet->Translate(0, 0, 15);
+	planet->Translate(0, 0, 10);
 	planet->SetRotationSpeed(0.0005f);
 	planet->SetColor(1,0.4f,1);
 
@@ -24,17 +21,19 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	planetComposite->Translate(10, 0, 0);
 	planetComposite->SetColor(0, 1, 0.2f);
 
-	IObject* planet2 = new Planet();
-	planet2->Initialize(textureLoader);
-	planet2->Scale(0.3f, 0.3f, 0.3f);
-	planet2->SetColor(1.0f, 1.0f, 1.0f);
-	planet2->SetRotationSpeed(0.001f);
-	planet2->Translate(6, 0, 0);
+	IObject* moon = new Planet();
+	moon->Initialize(textureLoader);
+	moon->Scale(0.3f, 0.3f, 0.3f);
+	moon->SetColor(1.0f, 1.0f, 1.0f);
+	moon->SetRotationSpeed(-0.005f);
+	moon->Translate(6, 0, 0);
 	
 	rootObject = new Composite();
-	rootObject->Initialize(textureLoader);
+	IObject* sun = new Sun();
+	sun->Initialize(textureLoader);
+	rootObject->Initialize(sun);
 	rootObject->Add(planet);
-	planetComposite->Add(planet2);
+	planetComposite->Add(moon);
 	rootObject->Add(planetComposite);
 
 	basicShader = new Shader();
@@ -42,17 +41,21 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 
 
 	vector<const char*> filePaths;
-	filePaths.push_back("../Content/skybox/right.bmp");
-	filePaths.push_back("../Content/skybox/left.bmp");
-	filePaths.push_back("../Content/skybox/top.bmp");
-	filePaths.push_back("../Content/skybox/bottom.bmp");
-	filePaths.push_back("../Content/skybox/back.bmp");
-	filePaths.push_back("../Content/skybox/front.bmp");
+	filePaths.push_back("../Content/skybox/space3.jpg");
+	filePaths.push_back("../Content/skybox/space3.jpg");
+	filePaths.push_back("../Content/skybox/space3.jpg");
+	filePaths.push_back("../Content/skybox/space3.jpg");
+	filePaths.push_back("../Content/skybox/space3.jpg");
+	filePaths.push_back("../Content/skybox/space3.jpg");
 	skybox = new Skybox();
 	skybox->Initialize(filePaths, textureLoader);
 
 	light = new Light();
 	light->Initialize();
+
+	ptrOpenGL->GetCamera()->position.z += 5;
+
+	rootObject->Scale(5, 5, 5);
 }
 
 void Scene::Destroy()
@@ -96,10 +99,12 @@ void Scene::input()
 
 void Scene::render()
 {
-
 	glDepthMask(GL_FALSE);
 	skyboxShader->Use();
-	skyboxShader->SetViewMatrix(lookAt(vec3(0, 0, 0), ptrOpenGL->GetCamera()->target, vec3(0.0f, 1.0f, 0.0f)));
+	mat4 viewMatrix = ptrOpenGL->GetViewMatrix();
+	mat3 emptyView = mat3(viewMatrix);
+	mat4 viewWithoutTranslation = mat4(emptyView);
+	skyboxShader->SetViewMatrix(viewWithoutTranslation);
 	skyboxShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
 	skybox->Render(*skyboxShader);
 	glDepthMask(GL_TRUE);
@@ -111,7 +116,6 @@ void Scene::render()
 	glUniform3f(glGetUniformLocation(basicShader->glProgram, "viewPos"), ptrOpenGL->GetCamera()->position.x, ptrOpenGL->GetCamera()->position.y, ptrOpenGL->GetCamera()->position.z);
 	light->Apply(basicShader);
 	rootObject->Render(*basicShader);
-	text->DrawTexts();
 }
 
 void Scene::update()

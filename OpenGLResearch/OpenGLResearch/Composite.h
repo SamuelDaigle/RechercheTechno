@@ -7,21 +7,23 @@ using namespace std;
 class Composite : public IObject
 {
 public:
-	virtual void Initialize(TextureLoader* _textureLoader) override;
+	void Initialize(TextureLoader* _textureLoader) override;
 
-	virtual void Destroy() override;
+	void Initialize(IObject* _object);
 
-	virtual void Update() override;
+	void Destroy() override;
 
-	virtual void SetColor(float _r, float _g, float _b) override;
+	void Update() override;
 
-	virtual void Render(IShader& _shader) override;
+	void SetColor(float _r, float _g, float _b) override;
 
-	virtual void Translate(float _x, float _y, float _z) override;
+	void Render(IShader& _shader) override;
 
-	virtual void Rotate(float _angleX, float _angleY, float _angleZ) override;
+	void Translate(float _x, float _y, float _z) override;
 
-	virtual void Scale(float _scaleX, float _scaleY, float _scaleZ) override;
+	void Rotate(float _angleX, float _angleY, float _angleZ) override;
+
+	void Scale(float _scaleX, float _scaleY, float _scaleZ) override;
 
 	void Add(IObject* _object);
 
