@@ -1,27 +1,11 @@
-﻿Build started 2016-02-05 10:46:15 AM.
+﻿Build started 2016-02-09 1:01:58 PM.
      1>Project "D:\Github\RechercheTechno\OpenGLResearch\OpenGLResearch\OpenGLResearch.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files\Visual Studio 2013\VC\bin\CL.exe /c /ID:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Composite.cpp Cube.cpp Light.cpp Model.cpp Planet.cpp Scene.cpp Shader.cpp Skybox.cpp SkyboxShader.cpp Sun.cpp Text.cpp TextureBank.cpp TextureLoader.cpp Triangle.cpp Window.cpp main.cpp
-         TextureBank.cpp
-         Generating Code...
-         Compiling...
-         TextureLoader.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         main.cpp
-         Window.cpp
-         Triangle.cpp
-         Text.cpp
-         Sun.cpp
-         SkyboxShader.cpp
+         D:\Program Files\Visual Studio 2013\VC\bin\CL.exe /c /ID:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Skybox.cpp
          Skybox.cpp
-         Shader.cpp
-         Scene.cpp
-         Planet.cpp
-         Model.cpp
-         Light.cpp
-         Cube.cpp
-         Composite.cpp
+     1>d:\github\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : see previous definition of 'TRANSPARENT'
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
        Link:
          D:\Program Files\Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.exe" /INCREMENTAL /NOLOGO /LIBPATH:Dependencies\soil /LIBPATH:Dependencies\cimg /LIBPATH:Dependencies\glm /LIBPATH:Dependencies\assimp /LIBPATH:Dependencies\freeglut /LIBPATH:Dependencies\glew D:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\glew32.lib D:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\glfw3dll.lib D:\Github\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\freeglut.lib SOIL.lib assimp.lib opengl32.lib freeglut.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Github\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Composite.obj
@@ -50,4 +34,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.27
+Time Elapsed 00:00:03.03

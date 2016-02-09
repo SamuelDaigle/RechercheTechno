@@ -39,16 +39,8 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	basicShader = new Shader();
 	skyboxShader = new SkyboxShader();
 
-
-	vector<const char*> filePaths;
-	filePaths.push_back("../Content/skybox/space3.jpg");
-	filePaths.push_back("../Content/skybox/space3.jpg");
-	filePaths.push_back("../Content/skybox/space3.jpg");
-	filePaths.push_back("../Content/skybox/space3.jpg");
-	filePaths.push_back("../Content/skybox/space3.jpg");
-	filePaths.push_back("../Content/skybox/space3.jpg");
 	skybox = new Skybox();
-	skybox->Initialize(filePaths, textureLoader);
+	skybox->Initialize("../Content/skybox/space3.jpg", textureLoader);
 
 	light = new Light();
 	light->Initialize();
@@ -101,10 +93,7 @@ void Scene::render()
 {
 	glDepthMask(GL_FALSE);
 	skyboxShader->Use();
-	mat4 viewMatrix = ptrOpenGL->GetViewMatrix();
-	mat3 emptyView = mat3(viewMatrix);
-	mat4 viewWithoutTranslation = mat4(emptyView);
-	skyboxShader->SetViewMatrix(viewWithoutTranslation);
+	skyboxShader->SetViewMatrix(transpose(orientate4(ptrOpenGL->GetCamera()->rotation)));
 	skyboxShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
 	skybox->Render(*skyboxShader);
 	glDepthMask(GL_TRUE);
