@@ -9,7 +9,7 @@ public:
 	Cube();
 	~Cube();
 
-	void Initialize(TextureLoader* _textureLoader) override;
+	void Initialize(MeshLoader* _meshLoader) override;
 	void Destroy() override;
 
 	void Render(IShader& _shader) override;

@@ -1,6 +1,6 @@
 #include "Triangle.h"
 
-void Triangle::Initialize(TextureLoader* _textureLoader)
+void Triangle::Initialize(MeshLoader* _meshLoader)
 {
 	scaling.x = 1;
 	scaling.y = 1;

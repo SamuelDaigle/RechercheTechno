@@ -1,10 +1,10 @@
 #include "Composite.h"
 
 
-void Composite::Initialize(TextureLoader* _textureLoader)
+void Composite::Initialize(MeshLoader* _meshLoader)
 {
 	planet = new Planet();
-	planet->Initialize(_textureLoader);
+	planet->Initialize(_meshLoader);
 }
 
 void Composite::Initialize(IObject* _object)

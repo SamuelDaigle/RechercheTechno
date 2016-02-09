@@ -3,7 +3,7 @@
 #include "Dependencies\glm\glm.hpp"
 #include "Dependencies\glm\gtx\euler_angles.hpp"
 #include "Dependencies\glm\gtx\transform.hpp"
-#include "TextureLoader.h"
+#include "MeshLoader.h"
 #include "IShader.h"
 
 using namespace glm;
@@ -11,7 +11,7 @@ using namespace glm;
 class IObject
 {
 public:
-	virtual void Initialize(TextureLoader* _textureLoader) = 0;
+	virtual void Initialize(MeshLoader* _meshLoader) = 0;
 	virtual void Destroy() = 0;
 
 	virtual void Render(IShader& _shader) = 0;

@@ -9,20 +9,23 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	TextureLoader* textureLoader = new TextureLoader();
 	textureLoader->Initialize();
 
+	MeshLoader* meshLoader = new MeshLoader();
+	meshLoader->Initialize(textureLoader);
+
 	planet = new Planet();
-	planet->Initialize(textureLoader);
+	planet->Initialize(meshLoader);
 	planet->Translate(0, 0, 10);
 	planet->SetRotationSpeed(0.0005f);
 	planet->SetColor(1,0.4f,1);
 
 	Composite* planetComposite = new Composite();
-	planetComposite->Initialize(textureLoader);
+	planetComposite->Initialize(meshLoader);
 	planetComposite->SetRotationSpeed(0.000005f);
 	planetComposite->Translate(10, 0, 0);
 	planetComposite->SetColor(0, 1, 0.2f);
 
 	IObject* moon = new Planet();
-	moon->Initialize(textureLoader);
+	moon->Initialize(meshLoader);
 	moon->Scale(0.3f, 0.3f, 0.3f);
 	moon->SetColor(1.0f, 1.0f, 1.0f);
 	moon->SetRotationSpeed(-0.005f);
@@ -30,7 +33,7 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	
 	rootObject = new Composite();
 	IObject* sun = new Sun();
-	sun->Initialize(textureLoader);
+	sun->Initialize(meshLoader);
 	rootObject->Initialize(sun);
 	rootObject->Add(planet);
 	planetComposite->Add(moon);

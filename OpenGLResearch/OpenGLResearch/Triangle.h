@@ -5,7 +5,7 @@
 class Triangle : public IObject
 {
 public:
-	void Initialize(TextureLoader* _textureLoader) override;
+	void Initialize(MeshLoader* _meshLoader) override;
 	void Destroy() override;
 
 	void SetVertices(vec3 _position, float _size);

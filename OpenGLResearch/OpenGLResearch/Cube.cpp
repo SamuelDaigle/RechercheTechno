@@ -13,7 +13,7 @@ Cube::~Cube()
 {
 }
 
-void Cube::Initialize(TextureLoader* _textureLoader)
+void Cube::Initialize(MeshLoader* _meshLoader)
 {
 	initializeBuffers();
 }

@@ -7,7 +7,7 @@ using namespace std;
 class Composite : public IObject
 {
 public:
-	void Initialize(TextureLoader* _textureLoader) override;
+	void Initialize(MeshLoader* _meshLoader) override;
 
 	void Initialize(IObject* _object);
 
