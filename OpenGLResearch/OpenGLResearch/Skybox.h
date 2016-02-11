@@ -1,3 +1,8 @@
+/************************************************************************/
+/* Author: Samuel Daigle et Sébastien Rousseau                          */
+/* Tutorial: http://www.learnopengl.com/#!Advanced-OpenGL/Cubemaps      */
+/************************************************************************/
+
 #pragma once
 
 #include "stdafx.h"

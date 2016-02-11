@@ -1,3 +1,7 @@
+/************************************************************************/
+/* Author: Samuel Daigle et Sébastien Rousseau                          */
+/************************************************************************/
+
 #include "Dependencies/glew/glew.h"
 #include "Dependencies/glew/wglew.h"
 #include "Dependencies\freeglut\freeglut.h"

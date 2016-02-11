@@ -1,3 +1,8 @@
+/************************************************************************/
+/* Author: Samuel Daigle                                                */
+/* Tutorial: http://www.learnopengl.com/#!Model-Loading/Model           */
+/************************************************************************/
+
 #pragma once
 
 #include "MeshBank.h"

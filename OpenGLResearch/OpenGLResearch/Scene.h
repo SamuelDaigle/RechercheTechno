@@ -1,3 +1,7 @@
+/************************************************************************/
+/* Author: Samuel Daigle et Sébastien Rousseau                          */
+/************************************************************************/
+
 #include "stdafx.h"
 #include "Triangle.h"
 #include "OpenGL.h"
@@ -7,7 +11,7 @@
 #include "Shader.h"
 #include "SkyboxShader.h"
 #include "InputHandler.h"
-#include "Cube.h"
+#include "Square.h"
 #include "Light.h"
 #include "Text.h"
 #include "Sun.h"

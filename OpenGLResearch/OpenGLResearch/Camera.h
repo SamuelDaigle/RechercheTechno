@@ -1,3 +1,7 @@
+/************************************************************************/
+/* Author: Samuel Daigle et Sébastien Rousseau                          */
+/************************************************************************/
+
 #include "Dependencies/glm/gtc/matrix_transform.hpp"
 #include "Dependencies\glm\gtx\euler_angles.hpp"
 #include "Dependencies\glm\gtx\transform.hpp"

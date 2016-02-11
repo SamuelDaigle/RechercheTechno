@@ -1,3 +1,7 @@
+/************************************************************************/
+/* Author: Samuel Daigle et Sébastien Rousseau                          */
+/************************************************************************/
+
 #pragma once
 #include "Dependencies/glew/glew.h"
 #include "Dependencies/cimg/CImg.h"

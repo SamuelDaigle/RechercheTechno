@@ -1,3 +1,8 @@
+/************************************************************************/
+/* Author: Samuel Daigle et Sébastien Rousseau                          */
+/* Tutorial(setupMesh): http://www.learnopengl.com/#!Model-Loading/Mesh */
+/************************************************************************/
+
 #pragma once
 
 #include <string>

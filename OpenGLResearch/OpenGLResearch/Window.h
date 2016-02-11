@@ -1,3 +1,7 @@
+/************************************************************************/
+/* Author: Samuel Daigle et Sébastien Rousseau                          */
+/************************************************************************/
+
 #include "stdafx.h"
 #include "OpenGL.h"
 #include "InputHandler.h"

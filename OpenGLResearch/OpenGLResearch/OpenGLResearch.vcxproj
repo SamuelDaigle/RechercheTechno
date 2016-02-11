@@ -70,13 +70,13 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Composite.h" />
-    <ClInclude Include="Cube.h" />
+    <ClInclude Include="Square.h" />
     <ClInclude Include="DynamicArray.hpp">
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Composite.cpp" />
-    <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="Square.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
@@ -125,8 +125,6 @@
     <None Include="skybox.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Color.h" />
-    <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="IObject.h" />
     <ClInclude Include="OpenGL.h" />
     <ClInclude Include="ShaderLoader.h" />
