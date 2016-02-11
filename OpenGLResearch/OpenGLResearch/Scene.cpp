@@ -43,7 +43,7 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	skyboxShader = new SkyboxShader();
 
 	skybox = new Skybox();
-	skybox->Initialize("../Content/skybox/space3.jpg", textureLoader);
+	skybox->Initialize("../Content/skybox/space.bmp", textureLoader);
 
 	light = new Light();
 	light->Initialize();
@@ -76,19 +76,19 @@ void Scene::input()
 	// Move with arrow.
 	if (ptrInputHandler->IsKeyDown('a'))
 	{
-		ptrOpenGL->GetCamera()->position -= ptrOpenGL->GetCamera()->right * vec3(0.01, 0.01, 0.01);
+		ptrOpenGL->GetCamera()->position -= ptrOpenGL->GetCamera()->right * vec3(0.05, 0.05, 0.05);
 	}
 	else if (ptrInputHandler->IsKeyDown('w'))
 	{
-		ptrOpenGL->GetCamera()->position -= ptrOpenGL->GetCamera()->forward* vec3(0.01, 0.01, 0.01);
+		ptrOpenGL->GetCamera()->position -= ptrOpenGL->GetCamera()->forward * vec3(0.05, 0.05, 0.05);
 	}
 	else if (ptrInputHandler->IsKeyDown('d'))
 	{
-		ptrOpenGL->GetCamera()->position += ptrOpenGL->GetCamera()->right* vec3(0.01, 0.01, 0.01);
+		ptrOpenGL->GetCamera()->position += ptrOpenGL->GetCamera()->right * vec3(0.05, 0.05, 0.05);
 	}
 	else if (ptrInputHandler->IsKeyDown('s'))
 	{
-		ptrOpenGL->GetCamera()->position += ptrOpenGL->GetCamera()->forward* vec3(0.01, 0.01, 0.01);
+		ptrOpenGL->GetCamera()->position += ptrOpenGL->GetCamera()->forward * vec3(0.05, 0.05, 0.05);
 	}
 }
 
@@ -96,8 +96,10 @@ void Scene::render()
 {
 	glDepthMask(GL_FALSE);
 	skyboxShader->Use();
-	skyboxShader->SetViewMatrix(transpose(orientate4(ptrOpenGL->GetCamera()->rotation)));
-	skyboxShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
+	mat4 proj = perspective<float>(90.0f, (float)glutGet(GLUT_SCREEN_WIDTH) / (float)glutGet(GLUT_SCREEN_HEIGHT), 0.1f, 100000.0f);
+	mat4 view = orientate4(vec3(-ptrOpenGL->GetCamera()->rotation.x, ptrOpenGL->GetCamera()->rotation.y, ptrOpenGL->GetCamera()->rotation.z));
+	skyboxShader->SetViewMatrix(view);
+	skyboxShader->SetProjectionMatrix(proj);
 	skybox->Render(*skyboxShader);
 	glDepthMask(GL_TRUE);
 	

@@ -7,6 +7,7 @@ class Sun : public IObject
 {
 public:
 	void Initialize(MeshLoader* _meshLoader) override;
+	void SetShader(IShader* _shader);
 
 	void Destroy() override;
 
@@ -14,5 +15,6 @@ public:
 
 private:
 	Model* model;
+	IShader* shader;
 };
 

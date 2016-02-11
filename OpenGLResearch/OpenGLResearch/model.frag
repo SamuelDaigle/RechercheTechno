@@ -43,7 +43,7 @@ void main()
     vec3 specular = pointLight.specular * spec * texture;
 
 	// Combine results
-	vec3 result = ambient + diffuse + specular;
+	vec3 result = ambient + diffuse;  // + specular;
 
     color = vec4(result, 1.0f) * ex_Color;
 }

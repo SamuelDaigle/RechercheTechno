@@ -3,12 +3,13 @@
 
 void Light::Initialize()
 {
-	Ambiant = vec3(0.5f, 0.5f, 0.5f);
+	Position = vec3(15, 0, 0);
+	Ambiant = vec3(0.01f, 0.01f, 0.01f);
 	Diffuse = vec3(1.0f, 1.0f, 1.0f);
 	Specular = vec3(1.0f, 1.0f, 1.0f);
 	Constant = 1.0f;
-	Linear = 0.009f;
-	Quadratic = 0.0032f;
+	Linear = 1.0f;
+	Quadratic = 1.0f;
 }
 
 void Light::Destroy()

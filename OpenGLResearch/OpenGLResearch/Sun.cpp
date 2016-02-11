@@ -8,13 +8,22 @@ void Sun::Initialize(MeshLoader* _meshLoader)
 	scaling.z = 1.0f;
 }
 
+void Sun::SetShader(IShader* _shader)
+{
+	shader = _shader;
+}
+
 void Sun::Destroy()
 {
 }
 
 void Sun::Render(IShader& _shader)
 {
+	if (shader == NULL)
+	{
+		shader = &_shader;
+	}
 	// Color
-	glUniform4f(glGetUniformLocation(_shader.glProgram, "Color"), r, g, b, 1.0f);
-	model->Draw(_shader);
+	glUniform4f(glGetUniformLocation(shader->glProgram, "Color"), r, g, b, 1.0f);
+	model->Draw(*shader);
 }
