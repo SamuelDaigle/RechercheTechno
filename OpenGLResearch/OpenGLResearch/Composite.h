@@ -13,7 +13,7 @@ class Composite : public IObject
 public:
 	void Initialize(MeshLoader* _meshLoader) override;
 
-	void Initialize(IObject* _object);
+	void SetSelfObject(IObject* _object);
 
 	void Destroy() override;
 

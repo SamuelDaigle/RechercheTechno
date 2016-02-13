@@ -32,15 +32,16 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 	moon->Translate(6, 0, 0);
 	
 	rootObject = new Composite();
-	IObject* sun = new Sun();
-	sun->Initialize(meshLoader);
-	rootObject->Initialize(sun);
 	rootObject->Add(planet);
 	planetComposite->Add(moon);
 	rootObject->Add(planetComposite);
 
-	basicShader = new Shader();
+	sun = new Sun();
+	sun->Initialize(meshLoader);
+
+	basicShader = new BasicShader();
 	skyboxShader = new SkyboxShader();
+	advancedShader = new AdvancedShader();
 
 	skybox = new Skybox();
 	skybox->Initialize("../Content/skybox/space.bmp", textureLoader);
@@ -94,6 +95,7 @@ void Scene::input()
 
 void Scene::render()
 {
+	// Draw skybox.
 	glDepthMask(GL_FALSE);
 	skyboxShader->Use();
 	mat4 proj = perspective<float>(90.0f, (float)glutGet(GLUT_SCREEN_WIDTH) / (float)glutGet(GLUT_SCREEN_HEIGHT), 0.1f, 100000.0f);
@@ -103,13 +105,21 @@ void Scene::render()
 	skybox->Render(*skyboxShader);
 	glDepthMask(GL_TRUE);
 	
+	// Draw sun.
 	basicShader->Use();
+	basicShader->SetWorldMatrix(sun->GetWorldMatrix());
 	basicShader->SetViewMatrix(ptrOpenGL->GetViewMatrix());
 	basicShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
+	sun->Render(*basicShader);
 
-	glUniform3f(glGetUniformLocation(basicShader->glProgram, "viewPos"), ptrOpenGL->GetCamera()->position.x, ptrOpenGL->GetCamera()->position.y, ptrOpenGL->GetCamera()->position.z);
-	light->Apply(basicShader);
-	rootObject->Render(*basicShader);
+	// Draw every planets.
+	advancedShader->Use();
+	advancedShader->SetViewMatrix(ptrOpenGL->GetViewMatrix());
+	advancedShader->SetProjectionMatrix(ptrOpenGL->GetProjMatrix());
+
+	glUniform3f(glGetUniformLocation(advancedShader->glProgram, "viewPos"), ptrOpenGL->GetCamera()->position.x, ptrOpenGL->GetCamera()->position.y, ptrOpenGL->GetCamera()->position.z);
+	light->Apply(advancedShader);
+	rootObject->Render(*advancedShader);
 }
 
 void Scene::update()

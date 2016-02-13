@@ -8,7 +8,8 @@
 #include "Composite.h"
 #include "Planet.h"
 #include "Skybox.h"
-#include "Shader.h"
+#include "BasicShader.h"
+#include "AdvancedShader.h"
 #include "SkyboxShader.h"
 #include "InputHandler.h"
 #include "Square.h"
@@ -37,8 +38,10 @@ private:
 	Composite* rootObject;
 	Planet* planet;
 	IShader* basicShader;
+	IShader* advancedShader;
 	IShader* skyboxShader;
 	Skybox* skybox;
 	Light* light;
+	IObject* sun;
 };
 

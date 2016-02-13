@@ -68,12 +68,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdvancedShader.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Composite.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="DynamicArray.hpp">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClCompile Include="AdvancedShader.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Composite.cpp" />
     <ClCompile Include="Square.cpp" />
@@ -87,7 +89,7 @@
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="BasicShader.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="SkyboxShader.cpp" />
     <ClCompile Include="Sun.cpp" />
@@ -107,7 +109,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="Shader.h" />
+    <ClInclude Include="BasicShader.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="SkyboxShader.h" />
     <ClInclude Include="Sun.h" />
@@ -118,8 +120,10 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="model.frag" />
-    <None Include="model.vert" />
+    <None Include="advanced.frag" />
+    <None Include="advanced.vert" />
+    <None Include="basic.frag" />
+    <None Include="basic.vert" />
     <None Include="packages.config" />
     <None Include="skybox.frag" />
     <None Include="skybox.vert" />

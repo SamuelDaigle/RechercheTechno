@@ -63,9 +63,6 @@
     <ClCompile Include="TextureBank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -90,19 +87,31 @@
     <ClCompile Include="Square.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AdvancedShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="model.frag">
-      <Filter>Shader</Filter>
-    </None>
-    <None Include="model.vert">
-      <Filter>Shader</Filter>
-    </None>
     <None Include="skybox.frag">
       <Filter>Shader</Filter>
     </None>
     <None Include="skybox.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="advanced.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="advanced.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="basic.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="basic.vert">
       <Filter>Shader</Filter>
     </None>
   </ItemGroup>
@@ -158,9 +167,6 @@
     <ClInclude Include="TextureBank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -186,6 +192,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Square.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdvancedShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

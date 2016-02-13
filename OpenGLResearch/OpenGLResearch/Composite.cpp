@@ -7,7 +7,7 @@ void Composite::Initialize(MeshLoader* _meshLoader)
 	planet->Initialize(_meshLoader);
 }
 
-void Composite::Initialize(IObject* _object)
+void Composite::SetSelfObject(IObject* _object)
 {
 	planet = _object;
 }
@@ -23,7 +23,10 @@ void Composite::Destroy()
 
 void Composite::Update()
 {
-	planet->Update();
+	if (planet != NULL)
+	{
+		planet->Update();
+	}
 	for each (IObject* childObject in childObjects)
 	{
 		childObject->Update();
@@ -32,23 +35,37 @@ void Composite::Update()
 
 void Composite::SetColor(float _r, float _g, float _b)
 {
-	planet->SetColor(_r, _g, _b);
+	if (planet != NULL)
+	{
+		planet->SetColor(_r, _g, _b);
+	}
 }
 
 void Composite::Render(IShader& _shader)
 {
-	_shader.SetWorldMatrix(planet->GetWorldMatrix());
-	planet->Render(_shader);
+	if (planet != NULL)
+	{
+		_shader.SetWorldMatrix(planet->GetWorldMatrix());
+		planet->Render(_shader);
+	}
 	for each (IObject* childObject in childObjects)
 	{
-		_shader.SetWorldMatrix(planet->GetWorldMatrix() * childObject->GetWorldMatrix());
+		mat4 parentWorldMatrix;
+		if (planet != NULL)
+		{
+			parentWorldMatrix = planet->GetWorldMatrix();
+		}
+		_shader.SetWorldMatrix(parentWorldMatrix * childObject->GetWorldMatrix());
 		childObject->Render(_shader);
 	}
 }
 
 void Composite::Translate(float _x, float _y, float _z)
 {
-	planet->Translate(_x, _y, _z);
+	if (planet != NULL)
+	{
+		planet->Translate(_x, _y, _z);
+	}
 	for each (IObject* childObject in childObjects)
 	{
 		childObject->Translate(_x, _y, _z);
@@ -57,7 +74,10 @@ void Composite::Translate(float _x, float _y, float _z)
 
 void Composite::Rotate(float _angleX, float _angleY, float _angleZ)
 {
-	planet->Rotate(_angleX, _angleY, _angleZ);
+	if (planet != NULL)
+	{
+		planet->Rotate(_angleX, _angleY, _angleZ);
+	}
 	for each (IObject* childObject in childObjects)
 	{
 		childObject->Rotate(_angleX, _angleY, _angleZ);
@@ -66,7 +86,10 @@ void Composite::Rotate(float _angleX, float _angleY, float _angleZ)
 
 void Composite::Scale(float _scaleX, float _scaleY, float _scaleZ)
 {
-	planet->Scale(_scaleX, _scaleY, _scaleZ);
+	if (planet != NULL)
+	{
+		planet->Scale(_scaleX, _scaleY, _scaleZ);
+	}
 }
 
 void Composite::Add(IObject* _object)
