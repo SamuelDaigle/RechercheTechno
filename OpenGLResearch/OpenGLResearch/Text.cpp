@@ -10,28 +10,23 @@ Text::~Text()
 {
 }
 
-void Text::DrawTexts()
+void Text::Draw()
 {
-	glDepthFunc(GL_FALSE);
-	for (int i = 0; i < strings.size(); i++)
-	{
-		int j = strlen(strings[i]);
-		
-		glColor3f(r[i], g[i], b[i]);
-		glRasterPos2f(xPosition[i], yPosition[i]);
-		for (int k = 0; k < j; k++) {
-			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, strings[i][k]);
-		}
+	int j = strlen(strings);
+
+	glColor3f(r, g, b);
+	glRasterPos2f(xPosition, yPosition);
+	for (int i = 0; i < j; i++) {
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, strings[i]);
 	}
-	glDepthFunc(GL_TRUE);
 }
 
 void Text::NewText(const char * _value, float _x, float _y, float _r, float _g, float _b)
 {
-	strings.push_back(_value);
-	xPosition.push_back(_x);
-	yPosition.push_back(_y);
-	r.push_back(_r);
-	g.push_back(_g);
-	b.push_back(_b);
+	strings = _value;
+	xPosition = _x;
+	yPosition = _y;
+	r = _r;
+	g = _g;
+	b = _b;
 }

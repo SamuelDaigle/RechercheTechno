@@ -94,6 +94,7 @@
     <ClCompile Include="SkyboxShader.cpp" />
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TextHolder.cpp" />
     <ClCompile Include="TextureBank.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="Triangle.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="SkyboxShader.h" />
     <ClInclude Include="Sun.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="TextHolder.h" />
     <ClInclude Include="TextureBank.h" />
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="VertexType.h" />
