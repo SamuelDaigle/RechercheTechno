@@ -21,6 +21,12 @@ void Text::Draw()
 	}
 }
 
+void Text::Destroy()
+{
+	delete strings;
+	strings = NULL;
+}
+
 void Text::NewText(const char * _value, float _x, float _y, float _r, float _g, float _b)
 {
 	strings = _value;

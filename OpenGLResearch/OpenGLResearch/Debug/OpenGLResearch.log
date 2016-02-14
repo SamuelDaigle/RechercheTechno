@@ -1,18 +1,53 @@
-﻿La génération a démarré 2016-02-14 10:30:18 AM.
+﻿La génération a démarré 2016-02-14 11:28:10 AM.
      1>Projet "C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\OpenGLResearch\OpenGLResearch.vcxproj" sur le nœud 2 (Build cible(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp Scene.cpp Text.cpp TextHolder.cpp Window.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/include/ /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AdvancedShader.cpp BasicShader.cpp Composite.cpp Light.cpp Mesh.cpp MeshBank.cpp MeshLoader.cpp Model.cpp Planet.cpp Scene.cpp Skybox.cpp SkyboxShader.cpp Square.cpp Sun.cpp Text.cpp TextHolder.cpp Triangle.cpp Window.cpp main.cpp
+         main.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
+         Window.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
+         Triangle.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
          TextHolder.cpp
      1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
                  c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
          Text.cpp
      1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
                  c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
-         Génération de code en cours...
-         Ignoré... (aucune modification pertinente détectée)
-         Window.cpp
+         Sun.cpp
+         Square.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
+         SkyboxShader.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
+         Skybox.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
          Scene.cpp
-         main.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
+         Planet.cpp
+         Model.cpp
+         MeshLoader.cpp
+         MeshBank.cpp
+         Mesh.cpp
+         Light.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
+         Composite.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
+         BasicShader.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
+         AdvancedShader.cpp
+     1>c:\users\belouga\desktop\recherchetechno\openglresearch\openglresearch\color.h(6): warning C4005: 'TRANSPARENT' : redéfinition de macro
+                 c:\program files (x86)\windows kits\8.1\include\um\wingdi.h(1861) : voir la définition précédente de 'TRANSPARENT'
+         Génération de code en cours...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.exe" /INCREMENTAL /NOLOGO /LIBPATH:Dependencies\soil /LIBPATH:Dependencies\cimg /LIBPATH:Dependencies\glm /LIBPATH:Dependencies\assimp /LIBPATH:Dependencies\freeglut /LIBPATH:Dependencies\glew C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\glew32.lib C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\glfw3dll.lib C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\packages\nupengl.core.0.1.0.1\build\native\../..//build/native/lib/Win32\freeglut.lib SOIL.lib assimp.lib opengl32.lib freeglut.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.lib" /MACHINE:X86 Debug\AdvancedShader.obj
          Debug\Camera.obj
@@ -40,13 +75,9 @@
          Debug\Vertex.obj
          Debug\Window.obj
          Debug\ShaderLoader.obj
-     1>SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'vc120.pdb' n'a pu Ûtre trouvÚ avec 'SOIL.lib(image_DXT.obj)' ou sur 'C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\vc120.pdb'á; l'objet sera liÚ sans informations de dÚbogage
-     1>SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'vc120.pdb' n'a pu Ûtre trouvÚ avec 'SOIL.lib(image_helper.obj)' ou sur 'C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\vc120.pdb'á; l'objet sera liÚ sans informations de dÚbogage
-     1>SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'vc120.pdb' n'a pu Ûtre trouvÚ avec 'SOIL.lib(SOIL.obj)' ou sur 'C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\vc120.pdb'á; l'objet sera liÚ sans informations de dÚbogage
-     1>SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'vc120.pdb' n'a pu Ûtre trouvÚ avec 'SOIL.lib(stb_image_aug.obj)' ou sur 'C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\vc120.pdb'á; l'objet sera liÚ sans informations de dÚbogage
          OpenGLResearch.vcxproj -> C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\Debug\OpenGLResearch.exe
      1>Génération du projet "C:\Users\Belouga\Desktop\RechercheTechno\OpenGLResearch\OpenGLResearch\OpenGLResearch.vcxproj" terminée (Build cible(s)).
 
 La génération a réussi.
 
-Temps écoulé 00:00:13.07
+Temps écoulé 00:01:23.65

@@ -10,7 +10,7 @@ TextHolder::~TextHolder()
 {
 	for each (Text * text in texts)
 	{
-		delete text;
+		SAFE_DESTROY(text);
 	}
 }
 

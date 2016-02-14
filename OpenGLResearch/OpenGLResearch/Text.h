@@ -13,6 +13,7 @@ public:
 
 	void Draw();
 	void NewText(const char * _value, float _x, float _y, float _r, float _g, float _b);
+	void Destroy();
 
 private:
 	const char * strings;
