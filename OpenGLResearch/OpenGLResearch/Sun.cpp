@@ -23,7 +23,5 @@ void Sun::Render(IShader& _shader)
 	{
 		shader = &_shader;
 	}
-	// Color
-	glUniform4f(glGetUniformLocation(shader->glProgram, "Color"), r, g, b, 1.0f);
 	model->Draw(*shader);
 }

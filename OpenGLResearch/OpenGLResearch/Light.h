@@ -18,8 +18,5 @@ public:
 	vec3 Ambiant;
 	vec3 Diffuse;
 	vec3 Specular;
-	float Constant;
-	float Linear;
-	float Quadratic;
 };
 
