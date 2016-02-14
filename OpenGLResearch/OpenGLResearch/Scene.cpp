@@ -14,14 +14,14 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 
 	planet = new Planet();
 	planet->Initialize(meshLoader);
-	planet->Translate(0, 0, 10);
+	planet->Translate(10, 0, 0);
 	planet->SetRotationSpeed(0.0005f);
 	planet->SetColor(1,0.4f,1);
 
 	Composite* planetComposite = new Composite();
 	planetComposite->Initialize(meshLoader);
 	planetComposite->SetRotationSpeed(0.000005f);
-	planetComposite->Translate(10, 0, 0);
+	planetComposite->Translate(6, 0, 0);
 	planetComposite->SetColor(0, 1, 0.2f);
 
 	IObject* moon = new Planet();
@@ -38,6 +38,7 @@ void Scene::Initialize(OpenGL* _ptrOpenGL, InputHandler* _ptrInputHandler)
 
 	sun = new Sun();
 	sun->Initialize(meshLoader);
+	sun->SetRotationSpeed(0.0001f);
 
 	basicShader = new BasicShader();
 	skyboxShader = new SkyboxShader();

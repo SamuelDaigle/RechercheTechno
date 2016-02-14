@@ -6,11 +6,6 @@
 
 struct PointLight {
 	vec3 position;
-
-	float constant;
-	float linear;
-	float quadratic;
-
 	vec3 ambient;
 	vec3 diffuse;
 	vec3 specular;
@@ -37,7 +32,7 @@ void main()
     // Diffuse 
     vec3 norm = normalize(ex_Normal);
     vec3 lightDir = normalize(pointLight.position - ex_FragPos);
-    float diff = max(dot(norm, lightDir), 0.0);
+    float diff = max(0.0, dot(norm, lightDir));
     vec3 diffuse = diff * pointLight.diffuse * texture;
     
     // Specular
