@@ -11,15 +11,15 @@ public:
 	Text();
 	~Text();
 
-	void Draw();
+	void DrawTexts();
 	void NewText(const char * _value, float _x, float _y, float _r, float _g, float _b);
 
 private:
-	const char * strings;
-	float xPosition;
-	float yPosition;
-	float r;
-	float g;
-	float b;
+	vector<const char*> strings;
+	vector<float> xPosition;
+	vector<float> yPosition;
+	vector<float> r;
+	vector<float> g;
+	vector<float> b;
 };
 
